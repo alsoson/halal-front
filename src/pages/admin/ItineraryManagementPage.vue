@@ -109,7 +109,7 @@
         <q-dialog v-model="confirm" persistent>
           <q-card>
             <q-card-section class="row items-center">
-                <q-avatar icon="mdi-account-arrow-right" color="primary" text-color="white" />
+                <q-avatar icon="mdi-delete" color="primary" text-color="white" />
                   <span class="q-ml-sm text-center q-ml-md">{{$t('Delete')}} ?</span>
             </q-card-section>
 
@@ -168,6 +168,8 @@
               </div>
             </q-card-action>
           </q-card>
+
+          <!-- 登出鍵 -->
           <q-dialog v-model="confirmSm" persistent>
             <q-card>
               <q-card-section class="row items-center">
@@ -175,7 +177,7 @@
                     <span class="q-ml-sm text-center q-ml-md">{{$t('Delete')}} ?</span>
               </q-card-section>
               <q-card-actions align="right">
-                <q-btn flat color="primary" icon="mdi-check-circle"  @click="deleteProduct(card.row._id)"   v-close-popup />
+                <q-btn flat color="primary" icon="mdi-check-circle"  @click="deleteProduct(card.row._id)" v-close-popup />
                 <q-btn flat color="primary" icon="mdi-close-circle" v-close-popup />
               </q-card-actions>
             </q-card>

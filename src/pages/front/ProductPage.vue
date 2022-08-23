@@ -1,7 +1,7 @@
 <template>
   <div id="Product">
     <div class="flex flex-center column">
-      <h1 class="text-primary q-my-sm">{{ product.name }}</h1>
+      <h1 class="text-primary q-my-sm" style="font-family:ChenYuluoyan-Thin, sans-serif">{{ product.name }}</h1>
       <q-btn rounded style="width:55px;height:55px" color='primary' class="q-pa-none" icon="mdi-cart-variant" type='submit'></q-btn>
     </div>
     <div class="row">

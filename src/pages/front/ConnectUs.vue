@@ -320,7 +320,7 @@ const submitForm = async () => {
 
 const init = async () => {
   try {
-    const { data } = await apiAuth.get('/qa/all')
+    const { data } = await apiAuth.get('/qa/')
     rows.push(...data.result)
   } catch (error) {
     console.log(error)

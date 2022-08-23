@@ -50,6 +50,7 @@ export default {
   memberManagement: '會員管理',
   itineraryManagement: '行程管理',
   orderManagement: '訂單管理',
+  messageManagement: '訊息管理',
 
   // admin-Itinerary
   itineraryName: '行稱名稱',

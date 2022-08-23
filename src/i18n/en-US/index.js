@@ -45,6 +45,7 @@ export default {
   memberManagement: 'Member Management',
   itineraryManagement: 'Itinerary Management',
   orderManagement: 'Order Management',
+  messageManagement: 'Message Management',
 
   // admin-Itinerary
   itineraryName: 'Itinerary Name',

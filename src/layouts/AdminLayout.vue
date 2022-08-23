@@ -44,6 +44,16 @@
               </q-item-section>
             </q-item>
 
+            <q-item to="/admin/message" clickable v-ripple>
+              <q-item-section avatar>
+                <q-icon name="mdi-forum" />
+              </q-item-section>
+
+              <q-item-section>
+                {{$t('messageManagement')}}
+              </q-item-section>
+            </q-item>
+
             <q-item clickable v-ripple>
               <q-item-section avatar>
                 <q-icon name="fa-solid fa-language " />

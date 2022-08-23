@@ -171,6 +171,16 @@ const routes = [
           login: true,
           admin: true
         }
+      },
+      {
+        path: 'message',
+        name: 'admin-message',
+        component: () => import('src/pages/admin/MessagePage.vue'),
+        meta: {
+          title: 'Admin | Message',
+          login: true,
+          admin: true
+        }
       }
     ]
   },

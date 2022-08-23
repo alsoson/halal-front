@@ -19,32 +19,32 @@
         class="mySwiper"
       >
         <swiper-slide>
-          132
-          <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+
+          <img src="../../assets/images/itinerary/阿里山.jpg" />
         </swiper-slide>
         <swiper-slide>
-          <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+          <img src="../../assets/images/itinerary/西子灣.jpg" />
         </swiper-slide>
         <swiper-slide>
-          <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+          <img src="../../assets/images/itinerary/清境農場.jpg" />
         </swiper-slide>
         <swiper-slide>
-          <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
+          <img src="../../assets/images/itinerary/平溪.jpg" />
         </swiper-slide>
         <swiper-slide>
-          <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
+          <img src="../../assets/images/itinerary/九份.jpg" />
         </swiper-slide>
         <swiper-slide>
-          <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
+          <img src="../../assets/images/itinerary/十分瀑布.jpg" />
         </swiper-slide>
         <swiper-slide>
-          <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
+          <img src="../../assets/images/itinerary/大港橋.jpeg" />
         </swiper-slide>
         <swiper-slide>
-          <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
+          <img src="../../assets/images/itinerary/大稻埕.jpeg" />
         </swiper-slide>
         <swiper-slide>
-          <img src="https://swiperjs.com/demos/images/nature-9.jpg"/>
+          <img src="../../assets/images/itinerary/安平古堡.jpg"/>
         </swiper-slide>
       </swiper>
     </div>
@@ -66,152 +66,6 @@
     </div>
 
     <div id="IntineraryMessage" class="q-py-lg" style="overflow:hidden">
-      <!-- <div class="row box">
-        <div class="col col-12 col-md-6 col-lg-4">
-          <div class="flex row justify-center q-my-md q-my-sm-none">
-            <div class="text-box">
-              <p class="q-ma-none p q-mx-sm-none" style="
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden">原來台灣清真隨處可見，下次一定再來!</p>
-            </div>
-            <q-avatar style="" src="" color="dark" text-color="primary" icon="fa-solid fa-face-smile"></q-avatar>
-          </div>
-        </div>
-
-        <div class="col col-12 col-md-6 col-lg-4">
-          <div class="flex row row-reverse  justify-center q-my-md">
-            <div class="text-box" >
-              <p class="q-ma-none p" style="width: 100%;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden">行程安排流暢，沒有太多的購物站強迫消費，行程費用也不高，cp值很高</p>
-            </div>
-            <q-avatar src="" color="dark" text-color="primary" icon="fa-solid fa-face-smile"></q-avatar>
-          </div>
-        </div>
-
-        <div class="col col-12 col-md-6 col-lg-4">
-          <div class="flex row row-reverse  justify-center q-my-md">
-            <div class="text-box">
-              <p class="q-ma-none p" style="width: 100%;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden">1234</p>
-            </div>
-            <q-avatar src="" color="dark" text-color="primary" icon="fa-solid fa-face-smile"></q-avatar>
-          </div>
-        </div>
-
-        <div class="col col-12 col-md-6 col-lg-4 col-text-RWD">
-          <div class="flex row row-reverse  justify-center q-my-md">
-            <div class="text-box">
-              <p class="q-ma-none p" style="width: 100%;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden">1111</p>
-            </div>
-            <q-avatar src="" color="dark" text-color="primary" icon="fa-solid fa-face-smile"></q-avatar>
-          </div>
-        </div>
-
-        <div class="col col-12 col-md-6 col-lg-4 gt-sm block ">
-          <div class="flex row row-reverse  justify-center q-my-md">
-            <div class="text-box" >
-              <p class="q-ma-none p" style="width: 100%;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden">2222</p>
-            </div>
-            <q-avatar src="" color="dark" text-color="primary" icon="fa-solid fa-face-smile"></q-avatar>
-          </div>
-        </div>
-
-        <div class="col col-12 col-md-6 col-lg-4 gt-sm">
-          <div class="flex row row-reverse  justify-center q-my-md">
-            <div class="text-box">
-              <p class="q-ma-none p" style="width: 100%;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden">3333</p>
-            </div>
-            <q-avatar src="" color="dark" text-color="primary" icon="fa-solid fa-face-smile"></q-avatar>
-          </div>
-        </div>
-
-        <div class="col col-12 col-md-6 col-lg-4 lt-sm block">
-          <div class="flex row row-reverse  justify-center q-my-md">
-            <div class="text-box">
-              <p class="q-ma-none p" style="width: 100%;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden">4444</p>
-            </div>
-            <q-avatar src="" color="dark" text-color="primary" icon="fa-solid fa-face-smile"></q-avatar>
-          </div>
-        </div>
-
-        <div class="col col-12 col-md-6 col-lg-4 lt-sm block">
-          <div class="flex row row-reverse  justify-center q-my-md">
-            <div class="text-box" >
-              <p class="q-ma-none p" style="width: 100%;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden">5555</p>
-            </div>
-            <q-avatar src="" color="dark" text-color="primary" icon="fa-solid fa-face-smile"></q-avatar>
-          </div>
-        </div>
-
-        <div class="col col-12 col-md-6 col-lg-4 lt-sm block">
-          <div class="flex row row-reverse  justify-center q-my-md">
-            <div class="text-box">
-              <p class="q-ma-none p" style="width: 100%;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden">6666</p>
-            </div>
-            <q-avatar src="" color="dark" text-color="primary" icon="fa-solid fa-face-smile"></q-avatar>
-          </div>
-        </div>
-
-        <div class="col col-12 col-md-6 col-lg-4 lt-sm block">
-          <div class="flex row row-reverse  justify-center q-my-md">
-            <div class="text-box">
-              <p class="q-ma-none p" style="width: 100%;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden">7777</p>
-            </div>
-            <q-avatar src="" color="dark" text-color="primary" icon="fa-solid fa-face-smile"></q-avatar>
-          </div>
-        </div>
-
-        <div class="col col-12 col-md-6 col-lg-4">
-          <div class="flex row row-reverse  justify-center q-my-md">
-            <div class="text-box" >
-              <p class="q-ma-none p" style="width: 100%;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden">8888</p>
-            </div>
-            <q-avatar src="" color="dark" text-color="primary" icon="fa-solid fa-face-smile"></q-avatar>
-          </div>
-        </div>
-
-        <div class="col col-12 col-md-6 col-lg-4">
-          <div class="flex row row-reverse  justify-center q-my-md">
-            <div class="text-box">
-              <p class="q-ma-none p" style="width: 100%;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden">9999</p>
-            </div>
-            <q-avatar src="" color="dark" text-color="primary" icon="fa-solid fa-face-smile"></q-avatar>
-          </div>
-        </div>
-
-      </div> -->
 
       <div class="box">
         <q-intersection

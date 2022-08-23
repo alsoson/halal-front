@@ -6,16 +6,18 @@
       <q-card class="my-card q-ma-sm" style="">
         <!-- <pre>{{collection}}</pre> -->
         <q-img :src="collection.product.image" :ratio="4/3">
-          <div class="absolute-bottom">
-            <div class="text-h6">{{collection.product.name}}</div>
-            <div class="text-subtitle2">${{collection.product.price}}</div>
-            <div class="text-subtitle3">{{collection.product.startDay}} ~ {{collection.product.endDay}}</div>
+          <div class="absolute-bottom q-pb-none" style="padding-bottom:0">
+            <div class="flex row justify-between">
+              <div class="text-h6 text-accent">{{collection.product.name}}</div>
+              <div class="text-subtitle2">${{collection.product.price}}</div>
+            </div>
+            <div class="text-subtitle3 text-accent">{{ new Date(collection.product.startDay).toDateString().toLocaleString() }} ~ {{ new Date(collection.product.endDay).toDateString().toLocaleString() }}</div>
 
             <q-card-actions class="flex justify-right">
-              <q-btn round flat icon="mdi-cart" :key="collection._id"  @click="addCart({ product: collection.product._id, quantity: 1 });deleteCollection(collection.product._id)"></q-btn>
+              <q-btn round flat icon="mdi-cart" :key="collection._id" class="text-accent" @click="addCart({ product: collection.product._id, quantity: 1 });deleteCollection(collection.product._id)"></q-btn>
               <!-- @click="twoFunction(collection.product._id, 1)" -->
               <!--  @click="addCart({ product: collection.product._id, quantity: 1 });deleteCollection(collection.product._id)" -->
-              <q-btn  round flat icon="mdi-delete" :key="collection.product._id" @click="deleteCollection(collection.product._id)"></q-btn>
+              <q-btn  round flat icon="mdi-delete" :key="collection.product._id" @click="deleteCollection(collection.product._id)" style="color:#FFC0CB"></q-btn>
             </q-card-actions>
 
           </div>.

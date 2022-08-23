@@ -61,7 +61,7 @@
       <div class="col col-10">
         <h4>{{ item.product.name }}</h4>
         <h6>$ {{ item.product.price }}</h6>
-        <h6>{{ item.product.startDay }} ~ {{ item.product.endDay }}</h6>
+        <h6>{{ new Date(item.product.startDay).getFullYear().toLocaleString() }}.{{ new Date(item.product.startDay).getMonth() +1 }}.{{ new Date(item.product.startDay).getDate().toLocaleString() }} ~ {{ new Date(item.product.endDay).getFullYear().toLocaleString() }}.{{ new Date(item.product.endDay).getMonth()+1}}.{{ new Date(item.product.endDay).getDate().toLocaleString() }}</h6>
         {{ item.product.price * item.quantity }}
         <q-btn color='primary' @click='updateCart(idx, 0)'>刪除</q-btn>
         <!-- <q-btn @click="form.dialog = true" color='accent' v-for="number in item.quantity" :key="number">參加者{{number}}</q-btn> -->
