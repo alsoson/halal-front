@@ -1,0 +1,30 @@
+// 所有Halal 的Data 用一樣的CSS
+.halalData
+  color: #1c3131
+
+  p
+    font-size: 6px
+    color: $dark
+  
+  .word-small
+    font-size: 6px
+    text-align: right
+
+  .caption:nth-child(even)
+    background-color: $background
+    border-radius: 30px
+
+@media (min-width: $breakpoint-sm-min)
+  #accommodation
+    .word-small
+      font-size: 10px
+
+    p
+      font-size: 10px
+      color: $dark
+
+
+@media (min-width: $breakpoint-md-min)
+  #accommodation
+    .word-small
+      font-size: 15px
