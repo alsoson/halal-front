@@ -178,6 +178,6 @@ const localeOptions = [
 ]
 
 const { locale } = useI18n({ useScope: 'global' })
+// console.log(useQuasar().lang.getLocale())
 locale.value = useQuasar().lang.getLocale()
-
 </script>
