@@ -147,8 +147,40 @@
       </q-list>
     </div>
   </div>
-  <div class="box bg-accent" style="margin-bottom:100px;border-radius:30px">
+  <div class="box">
+    <q-btn round color="secondary" @click="commit = true">
+      <q-spinner-comment
+        color="accent"
+        size="1.5em"
+      />
+    </q-btn>
 
+    <q-dialog v-model="commit" position="bottom" persistent>
+      <!-- <q-card style="width: 80%"> -->
+        <div class="box bg-accent" style="margin-bottom:10px;border-radius:30px">
+          <q-form @submit.prevent='submitForm'>
+            <div class="row q-pa-md text-center">
+              <div class="col-12 col-md-6 q-my-sm q-px-sm">
+                <q-input v-model="form.anonymous" :label="$t('anonymous')" rounded outlined></q-input>
+              </div>
+              <div class="col-12 col-md-6 q-my-sm q-px-sm">
+                <q-input v-model="form.title" :label="$t('title')" rounded outlined></q-input>
+              </div>
+              <div class="col-12 q-my-sm q-px-sm">
+                <q-input v-model="form.description" :label="$t('content')"
+            type="textarea" rounded outlined></q-input>
+              </div>
+              <div class="col-12 text-center">
+                <q-btn round icon="fa-solid fa-xmark" color="secondary" class="text-center q-mx-sm" v-close-popup></q-btn>
+                <q-btn round icon="fa-solid fa-check" type="sumbit" color="secondary" class="text-center q-mx-sm" :loading='form.submitting' v-close-popup></q-btn>
+              </div>
+            </div>
+          </q-form>
+  </div>
+      <!-- </q-card> -->
+    </q-dialog>
+  </div>
+  <!-- <div class="box bg-accent" style="margin-bottom:100px;border-radius:30px">
     <q-form @submit.prevent='submitForm'>
       <div class="row q-pa-md ">
         <div class="col-12 col-md-6 q-my-sm q-px-sm">
@@ -164,61 +196,9 @@
       </div>
       <q-btn type="sumbit" color="secondary" :label="$t('submit')" class="" :loading='form.submitting'></q-btn>
     </q-form>
-  </div>
+  </div> -->
 
   <div class="box">
-    <!-- <q-table
-      title="Treats"
-      :rows="qa"
-      :columns="columns"
-      row-key="name"
-    >
-
-      <template v-slot:header="props">
-        <q-tr :props="props">
-          <q-th auto-width />
-          <q-th
-            v-for="col in props.cols"
-            :key="col.name"
-            :props="props"
-          >
-            {{ col.label }}
-          </q-th>
-        </q-tr>
-      </template>
-
-      <template v-slot:body="props">
-         <pre>
-          {{props}}
-        </pre>
-        <q-tr :props="props">
-          <q-td auto-width>
-            <q-btn size="sm" color="accent" round dense @click="props.expand = !props.expand" :icon="props.expand ? 'remove' : 'add'" />
-          </q-td>
-          <q-td
-            v-for="col in props.cols"
-            :key="col.name"
-          >
-            {{ card.row[col.name] }}
-          </q-td>
-          <q-td
-            v-for="row in props.row"
-            :key="row.name"
-            :props="props"
-          >
-            {{ row.anonymous }}
-          </q-td>
-        </q-tr>
-        <q-tr v-show="props.expand" :props="props">
-          <q-td colspan="100%">
-            <div class="text-left">{{ props.row.description }}</div>
-            <div class="text-left">{{ props.row.reply }}</div>
-          </q-td>
-        </q-tr>
-      </template>
-
-    </q-table> -->
-
       <q-table
       grid
       :card-container-class="cardContainerClass"
@@ -242,18 +222,31 @@
         <!-- <pre>
           {{props}}
         </pre> -->
-        <div class="q-pa-xs col-xs-12 col-sm-6 col-md-4">
-          <q-card :key="props.row">
+        <div class="q-pa-xs col-xs-12 col-sm-6 col-md-4 col-lg-3">
+          <q-card class="qa-card text-dark" :key="props.row" style="background:#fffdf5">
             <q-card-section class="text-center">
-              <h5 class="q-ma-none"><strong>{{ props.row.title }}</strong></h5>
-              <h7>{{ props.row.anonymous }}</h7>
+              <h5 class="q-ma-none text-secondary"><strong>{{ props.row.title }}</strong></h5>
+              <h7 class="text-secondary">{{ props.row.anonymous }}</h7>
             </q-card-section>
-            <q-separator />
-            <q-card-section class="">{{ props.row.description }}</q-card-section>
+            <!-- <q-separator /> -->
 
+            <q-card-section >
+              <span class="text-left q-mx-auto">
+                <q-icon name="fa-solid fa-q" color="secondary"></q-icon>
+              </span>
+              <span class="q-ml-sm">
+                {{ props.row.description }}
+              </span>
+              </q-card-section>
             <q-separator inset />
 
-            <q-card-section>{{ props.row.reply }}</q-card-section>
+            <q-card-section class="text-center">
+              <span class="text-left q-mx-auto">
+                <q-icon name="fa-solid fa-a" color="secondary" ></q-icon>
+              </span>
+              <span class="q-ml-sm">
+                {{ props.row.reply }}
+              </span></q-card-section>
           </q-card>
         </div>
       </template>
@@ -262,7 +255,7 @@
 </q-page>
 </template>
 <script setup>
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 import { apiAuth } from '../../boot/axios'
 import Swal from 'sweetalert2'
 
@@ -271,7 +264,8 @@ const rows = reactive([])
 // for (i in rows.rowIndex) {
 //   const { i } = ref('one')
 // }
-
+const commit = ref(false)
+const filter = ref('')
 const form = reactive({
   anonymous: '',
   title: '',

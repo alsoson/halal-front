@@ -51,7 +51,6 @@
                 :label="`On the Shelf - ${form.sell}`"
                 :true-value="true"
                 color="green"
-                toggle-indeterminate="false"
                 v-model="form.sell"/>
               </div>
             </div>
@@ -276,6 +275,7 @@ const submitForm = async () => {
     if (['_id', 'idx', 'dialog', 'valid', 'submitting'].includes(key)) continue
     // else if (key === 'image') fd.append(key, form[key][0])
     else fd.append(key, form[key])
+    console.log(form[key])
   }
   console.log(fd)
 

@@ -31,9 +31,15 @@
           vertical
           class="text-teal"
         >
-          <q-tab name="whatIsHalal" icon="mdi-food-halal" :label="$t('whatIsHalal')" actived />
-          <q-tab name="aboutHalal" icon="fa-solid fa-star-and-crescent"  :label="$t('aboutMuslim')"/>
-          <q-tab name="aboutHalalTravel" icon="fa-solid fa-suitcase-rolling" :label="$t('aboutHalalTravel')" />
+          <q-tab class="q-my-md" name="whatIsHalal" icon="mdi-food-halal" actived >
+            <div class="sm-none">{{$t('whatIsHalal')}}</div>
+            </q-tab>
+          <q-tab class="q-my-md" name="aboutHalal" icon="fa-solid fa-star-and-crescent">
+            <div class="sm-none">{{$t('aboutMuslim')}}</div>
+          </q-tab>
+          <q-tab class="q-my-md" name="aboutHalalTravel" icon="fa-solid fa-suitcase-rolling">
+            <div class="sm-none">{{$t('aboutHalalTravel')}}</div>
+          </q-tab>
         </q-tabs>
       </template>
 
@@ -365,8 +371,11 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 const slidePage = ref(3)
+// const vm = this
+// vm.fullWidth = window.innerWidth
+// vm.fullHeight = window.innerHeight
 window.onresize = () => {
-  console.log(window.innerWidth)
+  // console.log(window.innerWidth)
   if (window.innerWidth <= 700) {
     slidePage.value = 1
   } else if (window.innerWidth > 1000) {
@@ -375,6 +384,7 @@ window.onresize = () => {
     slidePage.value = 2
   }
 }
+
 // const swiper = new Swiper('.mySwiper', {
 //   effect: 'cards',
 //   grabCursor: true
@@ -385,47 +395,16 @@ const autoplay = ref(true)
 const tab = ref('whatIsHalal')
 const splitterModel = ref(20)
 const modules = [Navigation]
-
+// for()
+// setTimeout(() => {
+//   yo()
+// }, 10000)
+window.onresize()
 </script>
 <style>
 
-.swiper-slide:nth-child(1n) {
-  background-color: rgb(206, 17, 17);
-}
-
-.swiper-slide:nth-child(2n) {
-  background-color: rgb(0, 140, 255);
-}
-
-.swiper-slide:nth-child(3n) {
-  background-color: rgb(10, 184, 111);
-}
-
-.swiper-slide:nth-child(4n) {
-  background-color: rgb(211, 122, 7);
-}
-
-.swiper-slide:nth-child(5n) {
-  background-color: rgb(118, 163, 12);
-}
-
-.swiper-slide:nth-child(6n) {
-  background-color: rgb(180, 10, 47);
-}
-
-.swiper-slide:nth-child(7n) {
-  background-color: rgb(35, 99, 19);
-}
-
-.swiper-slide:nth-child(8n) {
-  background-color: rgb(0, 68, 255);
-}
-
-.swiper-slide:nth-child(9n) {
-  background-color: rgb(218, 12, 218);
-}
-
-.swiper-slide:nth-child(10n) {
+.swiper-slide:nth-child() {
   background-color: rgb(54, 94, 77);
 }
+
 </style>

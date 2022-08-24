@@ -46,6 +46,13 @@ export default {
   usernameWrong: '帳號錯誤',
   yourName: '您的姓名',
 
+  // member
+  name: '姓名',
+  smartphone: '手機',
+  telephone: '家用電話',
+  imageUpload: '圖片上傳',
+  imageHint: '單張圖片 1M',
+
   // admin
   memberManagement: '會員管理',
   itineraryManagement: '行程管理',
@@ -62,6 +69,10 @@ export default {
   offTheShelf: '下架',
   onTheShelf: '上架',
 
+  // admin-order
+  orderInfo: '訂購人資訊',
+  pack: '組',
+
   // cart
   contactInfo: '訂購人資訊',
   firstName: '名字',
@@ -71,6 +82,7 @@ export default {
   // connectUs
   connectUsTitle: '給你最忠誠的享受',
   connectUsP: '力致於提供、最忠誠、最好、最貼心的行程服務給所有旅客，不在玩樂與忠誠之間單做選擇，在過程中相互認識，攜手同行',
+  title: '問題標題',
   company: '公司',
   whyCreate: '為甚麼建立這個想法呢 ?',
   anonymous: '匿名',

@@ -2,17 +2,27 @@
 .halalData
   color: #1c3131
 
+  .title-wrap
+    font-size: 17px
+    color: $secondary
   p
-    font-size: 6px
+    font-size: 12px
     color: $dark
   
   .word-small
-    font-size: 6px
+    font-size: 12px
     text-align: right
+    margin-top: auto
+    margin-bottom: auto
 
   .caption:nth-child(even)
     background-color: $background
     border-radius: 30px
+
+  .hover:hover
+    background: rgba(117, 181, 152,0.3)
+    border-radius: 20px
+
 
 @media (min-width: $breakpoint-sm-min)
   #accommodation
@@ -25,6 +35,12 @@
 
 
 @media (min-width: $breakpoint-md-min)
-  #accommodation
+  .halalData
     .word-small
-      font-size: 15px
+      font-size: 20px
+
+    .title-wrap
+      font-size: 25px
+    p
+      font-size: 16px
+      color: $dark

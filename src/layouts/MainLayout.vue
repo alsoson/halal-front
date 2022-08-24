@@ -4,13 +4,13 @@
         <q-toolbar class="bg-primary text-white" style="height:60px;">
           <q-btn flat @click="drawer = !drawer" dense >
             <q-img src="../assets/LOGO.png" width="50px"></q-img>
-            <q-toolbar-title style="font-family: 'Hobo Regular', cursive;text-transform:capitalize;">Hello ! Hallo</q-toolbar-title>
+            <q-toolbar-title style="font-family: 'Hobo Regular', cursive;text-transform:capitalize;">Hello ! Halal</q-toolbar-title>
             <!-- font-family: 'DynaPuff', cursive; -->
           </q-btn>
           <q-space />
 
           <q-btn v-if='!isLogin' to="/login" stretch flat icon="fa-solid fa-circle-user"/>
-      <q-btn v-if='isLogin' to="/cart" stretch flat icon="mdi-cart-variant" >
+          <q-btn v-if='isLogin' to="/cart" stretch flat icon="mdi-cart-variant" >
         <q-badge color="red" rounded v-if='cart > 0'/>
       </q-btn>
       <!-- <q-separator dark vertical /> -->

@@ -11,7 +11,6 @@
       :columns="columns"
       row-key="name"
       title-class="text-h5 title-center"
-      selection="multiple"
       v-model:selected="selected"
       :filter="filter"
     >
@@ -45,16 +44,7 @@
         </q-input>
       </template>
 
-      <template v-slot:header-selection="scope">
-        <q-toggle v-model="scope.selected" />
-      </template>
-
-      <template v-slot:body-selection="scope">
-        <q-toggle v-model="scope.selected" />
-      </template>
-
       <template v-slot:item="card">
-        <!-- <pre>{{ card }}</pre> -->
         <div
           class="q-pa-xs col-xs-12 col-sm-6 col-md-4 col-lg-3 grid-style-transition"
           :style="card.selected ? 'transform: scale(0.95);' : ''"
@@ -67,10 +57,7 @@
               </div>
             </q-card-section>
             <q-separator />
-            <!-- <div class="text-center q-mx-auto">
-              <q-btn rounded  @click="confirmCard = true" icon="mdi-delete">
-                </q-btn>
-              </div> -->
+
             <q-list v-for="col in card.cols" :key="col.name">
               <!-- <pre>{{ col }}</pre> -->
               <q-item class="text-center">
@@ -79,54 +66,20 @@
                     <q-item-label>{{ col.label }}</q-item-label>
                     <!-- card.col => 指 整個data col // col.name => card.cols.name col的name 要相同於 row value 的 name -->
                     <q-item-label caption v-if="col.name !== 'image'" class="text-center q-mx-auto">
-                      <!-- {{ card.row[col.name] }} -->
                       {{ col.value}}
                     </q-item-label>
-                    <!-- <q-avatar v-else-if="col.name == 'image'" square size="200px" class="text-center q-mx-auto">
-                        <img :src="card.row[col.name]" alt="">
-                    </q-avatar> -->
+
                   </q-item>
                 </q-item-section>
 
               </q-item>
             </q-list>
-            <!-- <q-card-action>
-
-            </q-card-action> -->
-              <!-- <q-dialog v-model="confirmCard" persistent>
-                <q-card>
-                  <q-card-section class="row items-center">
-                      <q-avatar icon="mdi-account-arrow-right" color="primary" text-color="white" />
-                        <span class="q-ml-sm text-center q-ml-md">{{$t('Delete')}} ?</span>
-                  </q-card-section>
-
-                  <q-card-actions align="right">
-                    <q-btn flat color="primary" icon="mdi-check-circle"  @click="deleteUser(card.row._id)" v-close-popup >
-                      <pre>{{ card.row }}</pre>
-                      </q-btn>
-                    <q-btn flat color="primary" icon="mdi-close-circle" v-close-popup />
-                  </q-card-actions>
-                </q-card>
-              </q-dialog> -->
 
           </q-card>
         </div>
       </template>
     </q-table>
   </div>
-    <!-- <q-dialog v-model="confirm" persistent>
-    <q-card>
-      <q-card-section class="row items-center">
-          <q-avatar icon="mdi-account-arrow-right" color="primary" text-color="white" />
-            <span class="q-ml-sm text-center q-ml-md">{{$t('Delete')}} ?</span>
-      </q-card-section>
-
-      <q-card-actions align="right">
-        <q-btn flat color="primary" icon="mdi-check-circle"  @click="deleteProduct(card.row._id)" v-close-popup />
-        <q-btn flat color="primary" icon="mdi-close-circle" v-close-popup />
-      </q-card-actions>
-    </q-card>
-  </q-dialog> -->
 
 </template>
 <script setup>

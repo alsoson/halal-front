@@ -41,6 +41,13 @@ export default {
   usernamehWrong: 'Username is wrong',
   yourName: 'Your Name',
 
+  // member
+  name: 'Name',
+  smartphone: 'Phone Number',
+  telephone: 'Tel',
+  imageUpload: 'Avatar',
+  imageHint: 'Single Avatar 1M',
+
   // admin
   memberManagement: 'Member Management',
   itineraryManagement: 'Itinerary Management',
@@ -58,6 +65,10 @@ export default {
   offTheShelf: 'Off the Shelf',
   onTheShelf: 'On the Shelf',
 
+  // admin-order
+  orderInfo: 'Order Infomation',
+  pack: 'Pack',
+
   // cart
   contactInfo: 'Contact Info',
   firstName: 'First Name',
@@ -67,6 +78,7 @@ export default {
   // connectUs
   connectUsTitle: 'Give you the most Joyful Enjoy by Halal',
   connectUsP: 'We are committed to providing the most loyal, best and most considerate itinerary services to all passengers.You do not need to choose between fun and loyalty, just make friends and have fun in travel',
+  title: 'Qusestion Title',
   company: 'Company',
   whyCreate: 'Why have this idea to create ?',
   anonymous: 'Anonymous',

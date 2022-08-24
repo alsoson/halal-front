@@ -1,5 +1,22 @@
-#memberCard
-  .avatar
-    width: 150px
-    height:150px
-    margin: auto
+#memberProfile
+  .q-card
+    width: 90%
+
+  .q-avatar
+    width: 40vw
+    height: 40vw
+
+
+@media (min-width: $breakpoint-sm)
+  #memberProfile
+    .q-avatar
+      width: 20vw
+      height: 20vw
+
+@media (min-width: $breakpoint-md)
+  #memberProfile
+    .q-card
+      width: 85%
+
+    .q-input
+      max-width: 100%

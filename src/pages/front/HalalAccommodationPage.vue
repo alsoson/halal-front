@@ -7,17 +7,17 @@
     <div class="q-pa-md q-gutter-sm">
 
     <q-dialog v-model="seamless" seamless position="right">
-      <div flat style="width: 350px;height:700px;background:transparent;border:none;box-shadow:none">
+      <div flat class="map" style="width:350px;height:700px;background:transparent;border:none;box-shadow:none">
       <q-btn round dense flat icon="close" style="height:30px" v-close-popup></q-btn>
         <iframe src="https://www.google.com/maps/d/embed?mid=14K7c1wBh23xHnEApxXcTy3-_WTL1cYbB&ehbc=2E312F" width="100%" height="600px" ></iframe>
       </div>
     </q-dialog>
   </div>
 
-  <div class="box halalData" id="accommodation">
+  <div class="box halalData" >
     <q-infinite-scroll @load="onLoad" :offset="250">
       <div v-for="(index) in arr" :key="index.name" class="caption" >
-        <div class="row q-my-md" >
+        <div class="row q-my-md hover" >
           <div class="col col-1 q-my-auto text-center">
             <q-avatar icon="fa-solid fa-bed" size="md" color="primary" text-color="white">
             </q-avatar>

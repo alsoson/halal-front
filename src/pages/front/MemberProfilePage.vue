@@ -1,106 +1,127 @@
 <template>
-  <q-card id="memberCard" style="width:90%" class="q-mx-auto q-mt-md bg-accent q-pa-md"  :key="user">
-    <q-form readonly>
-      <div class="row">
-        <div class="col col-12 col-md-6">
-          <div class="flex q-mx-auto">
-          <q-avatar class="avatar q-mx-auto">
-            <!-- style="width:150px;height:150px" -->
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZOi_tWWY8kbbWaDMncXDrSL8N_vSHVABAHR9ICp68ryH25trIJHMhFYd_bZlSOVEAfwI&usqp=CAU" style="width:100%;height:100%" alt="">
-          </q-avatar>
+<q-page id="memberProfile" class="flex flex-center">
+    <div class="row q-mt-none q-mt-lg-xl">
+      <q-card flat bordered v-if="openflag" class="q-mx-auto bg-accent" >
+        <div class="row memberCard q-pa-lg ">
+          <div class="col col-12 text-center">
+            <q-avatar color="secondary" class="text-white">
+              <q-icon v-if="userinfo.image == 0" name="fa-solid fa-address-book" size="xl"></q-icon>
+              <img v-else :src="userinfo.image" alt="">
+            </q-avatar>
           </div>
-        </div>
-        <div class="col col-12 col-md-6">
-          <q-input :label="$t('account')" v-bind:readonly="user.read" v-model="user.account"></q-input>
-          <q-input label="Email" v-bind:readonly="user.read"  v-model="user.email"></q-input>
-          <!-- <div>
-            <q-icon size="lg" name="mdi-account"></q-icon>
-            {{ user.account }}
-          </div>
-          <div>
-            <q-icon size="lg" name="mdi-email"></q-icon>
-            {{ user.email }}
-          </div> -->
-        </div>
+              <div class="col col-12 col-md-6 q-pa-xs">
+                <q-input :label="$t('account')" readonly v-model="userinfo.account"></q-input>
+              </div>
+              <div class="col col-12 col-md-6 q-pa-xs">
+                <q-input label="Email" readonly  v-model="userinfo.email"></q-input>
+              </div>
+              <div class="col col-12 q-pa-xs">
+                <q-input :label="$t('name')" readonly v-model="userinfo.name"></q-input>
+              </div>
+              <div class="col col-12 col-md-6 q-pa-xs">
+                <q-input :label="$t('smartphone')" readonly v-model="userinfo. smartphone"></q-input>
+              </div>
+              <div class="col col-12 col-md-6 q-pa-xs">
+                <q-input :label="$t('telephone')" readonly v-model="userinfo.telephone"></q-input>
+              </div>
+              <div class="col-12">
+                <div class="q-my-xxl q-mx-auto text-center q-pa-md">
+                  <q-btn round icon="fa-solid fa-pen-nib" class="q-py-sm q-px-xxl text-subtitle2" unelevated color="secondary" @click='goEdit()' />
+                </div>
+              </div>
+            </div>
+          </q-card>
+          <q-card flat bordered v-else class="q-mx-auto bg-accent">
+            <q-form @submit.prevent='editForm()'>
+            <div class="row memberCard q-pa-lg">
+
+              <div class="col col-12 col-md-6 q-pa-xs">
+                <q-input :label="$t('account')" readonly v-model="userinfo.account"></q-input>
+              </div>
+              <div class="col col-12 col-md-6 q-pa-xs">
+                <q-input label="Email" readonly  v-model="userinfo.email"></q-input>
+              </div>
+              <div class="col col-12 q-pa-xs">
+                <q-input :label="$t('name')" v-model="editinfo.name"></q-input>
+              </div>
+              <div class="col col-12 col-md-6 q-pa-xs">
+                <q-input :label="$t('smartphone')" v-model="editinfo. smartphone"></q-input>
+              </div>
+              <div class="col col-12 col-md-6 q-pa-xs">
+                <q-input :label="$t('telephone')" v-model="editinfo.telephone"></q-input>
+              </div>
+              <div class="col col-12 q-pa-xs">
+                <q-file type="file" accept='image/*' :hint="$t('imageHint')" :label="$t('imageUpload')" v-model="editinfo.image"></q-file>
+              </div>
+              <div class="col-12">
+                <div class="q-my-xxl q-mx-auto text-center q-pa-md">
+                  <q-btn round icon="fa-solid fa-xmark" class="q-py-sm q-px-xxl text-subtitle2 q-mx-xs" unelevated color="secondary" @click='changeFlag()' />
+                  <q-btn round icon="fa-solid fa-check" class="q-py-sm q-px-xxl q-mx-xs text-subtitle2" unelevated color="secondary" type="submit"/>
+                </div>
+              </div>
+            </div>
+            </q-form>
+          </q-card>
       </div>
-      <div class="row">
-        <div class="col col-12 col-md-6">
-          <q-input label="name" v-bind:readonly="user.read" v-model="user.name">{}</q-input>
-          <!-- <div>
-            <q-icon size="lg" name="fa-solid fa-signature"></q-icon>
-            {{ user.name}}
-          </div> -->
-        </div>
-        <!-- <div class="col col-12 col-md-6">
-          <q-input label="First Name"></q-input>
-        </div> -->
-        <div class="col col-12 col-md-6">
-          <q-input label="smartPhone" v-bind:readonly="user.read" v-model="user.smartphone"></q-input>
-        </div>
-        <div class="col col-12 col-md-6">
-          <q-input label="teltphone" v-bind:readonly="user.read" v-model="user.telephone"></q-input>
-        </div>
-        <div class="col col-12 text-center q-mt-md">
-          <q-btn color="primary" v-bind:readonly="user.read" v-if="readonly= true" @click="openDialog(user._id)">Edit</q-btn>
-          <q-btn color="primary" v-bind:readonly="user.read" v-else :label="$t('submit')" ></q-btn>
-          <!-- v-if="user.read=true" -->
-          <!-- <q-btn v-else-if="user.read=false" color="primary" @click="openDialog(user._id)">False</q-btn> -->
-          <!-- @click="openDialog(user._id) -->
-        </div>
-      </div>
-    </q-form>
-  </q-card>
+  </q-page>
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 import Swal from 'sweetalert2'
 import { apiAuth } from '../../boot/axios'
 
 // const users = reactive([])
 // const
-const user = reactive({
+const openflag = ref(true)
+
+const changeFlag = () => {
+  if (openflag.value) {
+    openflag.value = false
+  } else {
+    openflag.value = true
+  }
+}
+
+const userinfo = reactive({
   _id: '',
+  image: null,
   account: '',
   email: '',
   name: '',
-  image: '',
   smartphone: '',
-  telephone: '',
-  read: true
+  telephone: ''
+})
+
+const editinfo = reactive({
+  name: '',
+  image: null,
+  smartphone: '',
+  telephone: ''
 })
 
 // const read = readonly(true)
 
-const openDialog = (_id) => {
-  user._id = _id
-  // const idx = _id === '' ? -1 : user.findIndex(user => user._id === _id)
-  // if (idx > -1) {
-  //   user.name = user[idx].name
-  // } else {
-  //   user.name = ''
-  // }
-
-  user.image = null
-  // user.idx = idx
-  user.dialog = true
-  user.valid = false
-  user.submitting = false
-  user.read = false
+const goEdit = () => {
+  openflag.value = false
+  editinfo.name = userinfo.name
+  editinfo.smartphone = userinfo.smartphone
+  editinfo.telephone = userinfo.telephone
+  editinfo.image = userinfo.image
 }
 // console.log(users)
 // 抓到 data 有資料 ，users push 了卻沒有
 const init = async () => {
   try {
     const { data } = await apiAuth.get('/users')
-    console.log(data.result)
-    user._id = data.result._id
-    user.account = data.result.account
-    user.email = data.result.email
-    user.name = data.result.name
-    user.image = data.result.image
-    user.smartphone = data.result.smartphone
-    user.telephone = data.result.telephone
+    // console.log(data.result)
+    userinfo._id = data.result._id
+    userinfo.account = data.result.account
+    userinfo.email = data.result.email
+    userinfo.name = data.result.name
+    userinfo.image = data.result.image
+    userinfo.smartphone = data.result.smartphone
+    userinfo.telephone = data.result.telephone
     // console.log(data.result)
     // console.log(typeof (data.result))
     // users.push(data.result)
@@ -108,6 +129,43 @@ const init = async () => {
     // return users
   } catch (error) {
     console.log(error)
+    Swal.fire({
+      icon: 'error',
+      title: '失敗',
+      text: error.isAxiosError ? error.response.data.message : error.message
+    })
+  }
+}
+
+const editForm = async () => {
+  try {
+    // console.log(editinfo.image)
+    // console.log(editinfo)
+    const fd = new FormData()
+
+    for (const key in editinfo) {
+      fd.append(key, editinfo[key])
+      console.log(editinfo[key])
+    }
+    const object = {}
+    fd.forEach((value, key) => { object[key] = JSON.stringify(value) })
+    console.log(JSON.stringify(object))
+    await apiAuth.patch('/users', fd)
+    // editinfo.email = data.result.email
+    // editinfo.name = data.result.name
+    // editinfo.sex = data.result.sex
+    // editinfo.birthday = data.result.birthday
+    // editinfo.address = data.result.address
+    // editinfo.phone = data.result.phone
+    init()
+    Swal.fire({
+      icon: 'success',
+      title: '成功',
+      text: '編輯成功'
+    })
+    openflag.value = true
+  } catch (error) {
+    // console.log(error)
     Swal.fire({
       icon: 'error',
       title: '失敗',
