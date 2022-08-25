@@ -1,12 +1,9 @@
 <template >
-  <q-page class="q-mt-md" style="height:calc(100% - 60px);min-height:calc(100% - 60px)">
-    <div class="row bg-secondary q-mx-auto rounded" style="width:80%">
-      <div class="col">
-        <h3 class="text-center text-white"> 總金額  $ {{ totalPrice }} </h3>
-      </div>
-      <div class="col">
-        <q-btn class="text-center text-white q-my-auto" color='accent' @click="openDialog('')" :disabled='!canCheckout'>結帳</q-btn>
-      </div>
+  <q-page id="" class="q-mt-md" style="height:calc(100% - 60px);min-height:calc(100% - 60px)">
+
+    <div class="box" style="height:300px" >
+        <div class="img1 q-my-auto"></div>
+        <div class="img2 q-my-auto"></div>
 
       <q-dialog seamless v-model="form.dialog" persistent >
       <q-card id="dialog" >
@@ -47,92 +44,65 @@
         </q-form>
       </q-card>
     </q-dialog>
-    </div>
-
-  <q-card flat v-for='(item, idx) in cart' :key='item._id' :class="{'bg-red': !item.product.sell}" class="q-mx-auto q-ma-sm q-pa-md"
-  style="width:90%" >
-  <!-- {{item.product}} -->
-    <div class="row q-ml-lg">
-      <q-avatar size="200px" style="background:white">
-        <img :src='item.product.image' alt="">
-      </q-avatar>
-    </div>
-    <div class="row rounded q-pa-md" style="width:100%;background:rgba(117, 181, 152, 0.5);margin-top:-10px;" >
-      <div class="col col-10">
-        <h4>{{ item.product.name }}</h4>
-        <h6>$ {{ item.product.price }}</h6>
-        <h6>{{ new Date(item.product.startDay).getFullYear().toLocaleString() }}.{{ new Date(item.product.startDay).getMonth() +1 }}.{{ new Date(item.product.startDay).getDate().toLocaleString() }} ~ {{ new Date(item.product.endDay).getFullYear().toLocaleString() }}.{{ new Date(item.product.endDay).getMonth()+1}}.{{ new Date(item.product.endDay).getDate().toLocaleString() }}</h6>
-        {{ item.product.price * item.quantity }}
-        <q-btn color='primary' @click='updateCart(idx, 0)'>刪除</q-btn>
-        <!-- <q-btn @click="form.dialog = true" color='accent' v-for="number in item.quantity" :key="number">參加者{{number}}</q-btn> -->
+</div>
+<div class="box" style="margin-top:20px">
+  <div class="row">
+    <div class="col col-12 col-md-2">
+      <q-card class="bg-accent" style="box-shadow:none;border-radius:50px;">
+        <div class="row bg-secondary q-mx-auto rounded" style="width:80%">
+        </div>
+      <div class="col">
+        <div class="text-center text-white q-pb-lg">
+          <q-card-section>
+            <h5 style="margin-bottom:0;margin-top:10px" class="text-dark">{{$t('totalPrice')}}</h5>
+            <h4 style="margin-top:10px;margin-bottom:10px" class="text-dark">$ {{ totalPrice }}</h4>
+          </q-card-section>
+          <q-separator white inset />
+          <q-card-section>
+            <div v-for='(item) in cart' :key='item._id' class="flex justify-between">
+              <h7 style="text-align:left" class="text-dark">{{item.product.name}}</h7>
+              <h7 style="text-align:right" class="text-dark">$ {{item.product.price * item.quantity}}</h7>
+            </div>
+          </q-card-section>
+          <q-card-action>
+            <q-btn class="text-center text-white q-my-auto q-mb-md" color='secondary' @click="openDialog('')" :disabled='!canCheckout'>{{$t('checkout')}}</q-btn>
+          </q-card-action>
+        </div>
       </div>
-      <div class="col col-2">
-        <q-btn color='primary' @click='updateCart(idx, item.quantity-1)' variant="text"> - </q-btn>
-        <h4>{{ item.quantity }}</h4>
-        <q-btn color='primary' @click='updateCart(idx, item.quantity+1)' variant="text"> + </q-btn>
-      </div>
+      </q-card>
     </div>
-  </q-card>
-  </q-page>
+    <div class="col col-12 col-md-10">
+      <div class="row">
+        <div class="col-12 col-md-6 col-lg-4" v-for='(item, idx) in cart' :key='item._id'>
+          <!-- {{item}} -->
+          <q-card class="my-card q-pa-sm" :key="item" style="background:transparent;box-shadow:none;border-radius:50px">
+            <q-img :src='item.product.image'>
+              <div class="text-h5 absolute-bottom text-right">
+                <div class="flex row justify-between">
+                  <div class="text-h5 text-accent">{{item.product.name}}</div>
+                  <div class="text-subtitle1">${{item.product.price}}</div>
+                </div>
 
-  <!-- <div class="q-pa-md">
-    <q-stepper
-      v-model="step"
-      ref="stepper"
-      color="primary"
-      header-class="text-bold"
-      animated
-      v-for='(item) in cart' :key='item._id' :class="{'bg-red': !item.product.sell}"
-    >
-      <q-step
-        :name="1"
-        title="Check itinerary and Quantity for people"
-        icon="mdi-question"
-        :done="step > 1"
-      >
-        <q-card class="q-mx-auto q-ma-sm q-pa-md" flat style="width:90%" >
-    <div class="row q-ml-lg">
-      <q-avatar size="200px" style="background:white">
-        <img :src='item.product.image' alt="">
-          1234
-      </q-avatar>
-    </div>
-    <div class="row rounded q-pa-md" style="width:100%;background:rgba(117, 181, 152, 0.5);margin-top:-10px;" >
-      <div class="col col-10">
-        <h4>{{ item.product.name }}</h4>
-        <h6>$ {{ item.product.price }}</h6>
-        <h6>{{ item.product.startDay }} ~ {{ item.product.endDay }}</h6>
-        {{ item.product.price * item.quantity }}
-        <q-btn color='primary' @click='updateCart(idx, 0)'>刪除</q-btn>
+              <div class="text-subtitle2 text-accent" style="font-size:1.5vmin">{{ new Date(item.product.startDay).toDateString().toLocaleString() }} ~ {{ new Date(item.product.endDay).toDateString().toLocaleString() }}</div>
+
+              <q-card-actions class="flex justify-between q-px-none" style="padding-left:0">
+                <div class="div">
+                  <q-btn round flat :key="item._id" class="text-accent" icon="fa-solid fa-circle-minus" @click='updateCart(idx, item.quantity-1)'></q-btn>
+                  <h7>{{ item.quantity }}</h7>
+                  <q-btn round flat :key="item._id" class="text-accent" icon="fa-solid fa-circle-plus" @click='updateCart(idx, item.quantity+1)'></q-btn>
+                </div>
+                <q-btn round color='secondary' icon="mdi-delete" @click='updateCart(idx, 0)'></q-btn>
+              </q-card-actions>
+              </div>
+            </q-img>
+          </q-card>
+        </div>
       </div>
     </div>
-        </q-card>
-      </q-step>
+  </div>
+</div>
 
-      <q-step
-        :name="2"
-        title="Fill the information for people"
-        icon="create_new_folder"
-        :done="step > 2"
-      >
-      </q-step>
-      <q-step
-        :name="3"
-        title="check again "
-        icon="assignment"
-        :done="step > 3"
-      >
-        This step won't show up because it is disabled.
-      </q-step>
-
-      <template v-slot:navigation>
-        <q-stepper-navigation>
-          <q-btn @click="$refs.stepper.next()" color="primary" :label="step === 3 ? 'checkout' : 'Continue'" />
-          <q-btn v-if="step > 1" flat color="primary" @click="$refs.stepper.previous()" label="Back" class="q-ml-sm" />
-        </q-stepper-navigation>
-      </template>
-    </q-stepper>
-  </div> -->
+</q-page>
 
 </template>
 <script setup>
@@ -253,3 +223,50 @@ const init = async () => {
 }
 init()
 </script>
+
+<style >
+
+.img1 {
+    background: url('src/assets/images/cart/1.jpg') no-repeat center center;
+    background-size: cover;
+    height: 300px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: auto;
+}
+
+.img2 {
+    position: absolute;
+    height: 300px;
+    width: 100%;
+    left: 0;
+    top: 0;
+    mask: url(https://i.imgur.com/AYJuRke.png);
+    mask-size: 3000% 100%;
+    animation: maskMove 3s steps(29) infinite;
+    animation-delay: revert;
+}
+
+.img2::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 300px;
+    width: 100%;
+    background: url('src/assets/images/cart/2.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+@keyframes maskMove {
+  /* animation-delay: 3s */
+  from {
+      mask-position: 0 0;
+  }
+  to {
+      mask-position: 100% 0;
+  }
+}
+</style>

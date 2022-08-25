@@ -17,6 +17,14 @@
       <q-carousel-slide :name="3" img-src="../../assets/images/3.jpg" />
       <q-carousel-slide :name="4" img-src="../../assets/images/4.jpg" />
     </q-carousel>
+    <!-- <div class="" style="height:calc(100vh - 96px);background:black">
+      <div style="width:100%;height:100%">
+        <div class="img1"></div>
+      </div> -->
+          <!-- <div class="img1 q-pa-md" style="height:100%"></div>
+          <div class="img2 q-pa-md" style="width:100% ;height:calc(100vh - 60px)"></div> -->
+
+    <!-- </div> -->
   </div>
 
   <div class="box q-py-lg">
@@ -407,4 +415,44 @@ window.onresize()
   background-color: rgb(54, 94, 77);
 }
 
+/* .img1 {
+    background: url("../../assets/images/1.jpg") no-repeat center center;
+    background-size: contain;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+
+.img2 {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    mask: url(https://i.imgur.com/AYJuRke.png);
+    mask-size: 3000% 100%;
+    animation: maskMove 2s steps(29) infinite;
+}
+
+.img2::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: url("../../assets/images/2.jpg") no-repeat left top;
+    background-size: cover;
+} */
+
+/* @keyframes maskMove {
+    from {
+        mask-position: 0 0;
+    }
+    to {
+        mask-position: 100% 0;
+    }
+} */
 </style>

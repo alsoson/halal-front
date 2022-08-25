@@ -78,6 +78,8 @@ export default {
   firstName: '名字',
   lastName: '姓氏',
   phone: '電話',
+  totalPrice: '總金額',
+  check: '結帳',
 
   // connectUs
   connectUsTitle: '給你最忠誠的享受',

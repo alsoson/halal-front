@@ -74,6 +74,8 @@ export default {
   firstName: 'First Name',
   lastName: 'Last Name',
   phone: 'Phone',
+  totalPrice: 'Total Price',
+  check: 'Checkout',
 
   // connectUs
   connectUsTitle: 'Give you the most Joyful Enjoy by Halal',

@@ -10,7 +10,7 @@
 </div>
 <div class="title-box flex flex-center column" style="height:calc(100vh - 135px)">
     <p style="font-family:'ChenYuluoyan-Thin';" class="text-secondary q-ml-md-lg title-p">{{$t('connectUsTitle')}}</p>
-    <p style="font-family:'ChenYuluoyan-Thin';" class="small-p text-secondary q-ml-md-lg q-px-md">{{$t('connectUsP')}}</p>
+    <p style="font-family:'ChenYuluoyan-Thin'" class="small-text text-secondary q-px-md">{{$t('connectUsP')}}</p>
 </div>
 <div>
     <div class="text-svg" style="position:absolute;">

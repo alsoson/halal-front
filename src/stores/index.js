@@ -9,9 +9,11 @@ import { createPinia } from 'pinia'
  * async/await or return a Promise which resolves
  * with the Store instance.
  */
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 
 export default store((/* { ssrContext } */) => {
   const pinia = createPinia()
+  pinia.use(piniaPluginPersistedstate)
 
   // You can add Pinia plugins here
   // pinia.use(SomePiniaPlugin)

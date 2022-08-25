@@ -178,17 +178,17 @@ export const useUserStore = defineStore({
         })
       }
     },
-    // async getUser () {
-    //   const { data } = await api.post('/users/login')
-    //   try {
-    //     const { data } = await apiAuth.get('/users')
-    //     this.account = data.result.account
-    //     this.role = data.result.role
-    //     this.cart = data.result.cart
-    //   } catch (error) {
-    //     this.logout()
-    //   }
-    // }
+    async getUser () {
+      if (this.token.length === 0) return
+      try {
+        const { data } = await apiAuth.get('/users')
+        this.account = data.result.account
+        this.role = data.result.role
+        this.cart = data.result.cart
+      } catch (error) {
+        this.logout()
+      }
+    },
     async getUserAll () {
       if (this.token.length === 0) return
       try {
@@ -200,10 +200,9 @@ export const useUserStore = defineStore({
         this.logout()
       }
     }
-
+  },
+  persist: {
+    key: 'vite-shop',
+    paths: ['token']
   }
-  // persist: {
-  //   key: 'vite-shop',
-  //   paths: ['token']
-  // }
 })

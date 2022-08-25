@@ -5,10 +5,8 @@
 
 </template>
 
-<script>
-import { defineComponent } from 'vue'
+<script setup>
+import { useUserStore } from '../src/stores/user'
 
-export default defineComponent({
-  name: 'App'
-})
+useUserStore().getUser()
 </script>
