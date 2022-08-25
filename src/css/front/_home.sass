@@ -1,0 +1,47 @@
+#home
+  overflow: hidden
+  .video-class
+    height: 100%
+    position: absolute
+    left: -400px
+
+  p
+    font-size: 30px
+    text-align: center
+    text-shadow: 0 0 0.1em $dark, 0 0 0.1em $dark
+    display: block
+  
+  .small-p
+    font-size: 15px
+
+  svg
+    z-index: 5
+    display: none
+
+
+  .text-svg
+    right:500px
+    bottom: 135px
+      
+
+@media (min-width: $breakpoint-sm-min)
+  #home
+    overflow: hidden
+    .video-class
+      width: 100%
+      position: absolute
+      left: 0px
+    svg
+      z-index: 5
+      display: block
+    
+    .text-svg
+      right:600px
+    
+    p
+      font-size: 45px
+
+@media (min-width: $breakpoint-md-min)
+  #home
+    p
+      font-size: 80px
