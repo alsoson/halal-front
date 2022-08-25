@@ -1,11 +1,21 @@
 import MainLayout from 'layouts/MainLayout.vue'
-// import AdminLayout from 'layouts/AdminLayout.vue'
+import HomePage from 'pages/front/HomePage.vue'
 
 const routes = [
   {
     path: '/',
     component: MainLayout,
     children: [
+      {
+        path: '',
+        name: 'home',
+        component: HomePage,
+        meta: {
+          title: 'Hello ! Halal ',
+          login: false,
+          admin: false
+        }
+      },
       {
         path: 'introduction',
         name: 'introduction',
