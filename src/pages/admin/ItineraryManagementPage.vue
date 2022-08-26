@@ -39,6 +39,38 @@
               </div>
             </div>
             <div class="row">
+              <div class="col col-6">
+                <q-input rounded flat primary standout v-model="form.dayoneone" :label="$t('dayoneone')" class="q-ma-md" style="box-shadow:none"></q-input>
+              </div>
+              <div class="col col-6">
+                <q-input rounded flat primary standout v-model="form.dayonetwo" :label="$t('dayonetwo')" class="q-ma-md" style="box-shadow:none"></q-input>
+              </div>
+              <div class="col col-6">
+                <q-input rounded flat primary standout v-model="form.dayonethree" :label="$t('dayonethree')" class="q-ma-md" style="box-shadow:none"></q-input>
+              </div>
+              <div class="col col-6">
+                <q-input rounded flat primary standout v-model="form.dayonefour" :label="$t('dayonefour')" class="q-ma-md" style="box-shadow:none"></q-input>
+              </div>
+              <div class="col col-6">
+                <q-input rounded flat primary standout v-model="form.dayonefive" :label="$t('dayonefive')" class="q-ma-md" style="box-shadow:none"></q-input>
+              </div>
+              <div class="col col-6">
+                <q-input rounded flat primary standout v-model="form.daytwoone" :label="$t('daytwoone')" class="q-ma-md" style="box-shadow:none"></q-input>
+              </div>
+              <div class="col col-6">
+                <q-input rounded flat primary standout v-model="form.daytwotwo" :label="$t('daytwotwo')" class="q-ma-md" style="box-shadow:none"></q-input>
+              </div>
+              <div class="col col-6">
+                <q-input rounded flat primary standout v-model="form.daytwothree" :label="$t('daytwothree')" class="q-ma-md" style="box-shadow:none"></q-input>
+              </div>
+              <div class="col col-6">
+                <q-input rounded flat primary standout v-model="form.daytwofour" :label="$t('daytwofour')" class="q-ma-md" style="box-shadow:none"></q-input>
+              </div>
+              <div class="col col-6">
+                <q-input rounded flat primary standout v-model="form.daytwofive" :label="$t('daytwofive')" class="q-ma-md" style="box-shadow:none"></q-input>
+              </div>
+            </div>
+            <div class="row">
               <div class="col" col="12">
                 <q-input  v-model="form.description" rounded standout autogrow type="textarea"/>
               </div>
@@ -236,7 +268,17 @@ const form = reactive({
   submitting: false,
   perple: '',
   startDay: '',
-  endDay: ''
+  endDay: '',
+  dayoneone: '',
+  dayonetwo: '',
+  dayonethree: '',
+  dayonefour: '',
+  dayonefive: '',
+  daytwoone: '',
+  daytwotwo: '',
+  daytwothree: '',
+  daytwofour: '',
+  daytwofive: ''
 })
 
 const openDialog = (_id) => {
@@ -251,6 +293,16 @@ const openDialog = (_id) => {
     form.people = products[idx].people
     form.startDay = products[idx].startDay
     form.endDay = products[idx].endDay
+    form.dayoneone = products[idx].dayoneone
+    form.dayonetwo = products[idx].dayonetwo
+    form.dayonethree = products[idx].dayonethree
+    form.dayonefour = products[idx].dayonefour
+    form.dayonefive = products[idx].dayonefive
+    form.daytwoone = products[idx].daytwoone
+    form.daytwotwo = products[idx].daytwotwo
+    form.daytwothree = products[idx].daytwothree
+    form.daytwofour = products[idx].daytwofour
+    form.daytwofive = products[idx].daytwofive
   } else {
     form.name = ''
     form.price = 0
@@ -260,8 +312,18 @@ const openDialog = (_id) => {
     form.people = ''
     form.startDay = ''
     form.endDay = ''
+    form.dayoneone = ''
+    form.dayonetwo = ''
+    form.dayonethree = ''
+    form.dayonefour = ''
+    form.dayonefive = ''
+    form.daytwoone = ''
+    form.daytwotwo = ''
+    form.daytwothree = ''
+    form.daytwofour = ''
+    form.daytwofive = ''
   }
-  form.image = null
+  form.image = products[idx].image
   form.idx = idx
   form.dialog = true
   form.valid = false

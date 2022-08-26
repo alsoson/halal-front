@@ -1,6 +1,6 @@
 <template>
   <q-page id="loginPage" class="text-center flex-center flex" style="min-height:0px;height: calc( 100vh - 60px )">
-      <q-card class="q-ma-auto border-radius-50px login">
+      <q-card class="q-ma-auto login">
         <q-tab-panels v-model="tab" animated>
           <q-tab-panel name="login">
             <div class="text-h4 text-center q-py-lg" >{{$t('loginV')}}</div>

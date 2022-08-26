@@ -17,14 +17,14 @@
       <q-btn v-if='isLogin' to="/collection" stretch flat icon="mdi-heart-circle" />
       <q-btn-dropdown v-if='isLogin' stretch flat no-icon-animation dropdown-icon="mdi-account-check">
         <q-list>
-          <q-item to="/progress" clickable v-close-popup tabindex="0">
+          <!-- <q-item to="/progress" clickable v-close-popup tabindex="0">
             <q-item-section avatar>
               <q-avatar icon="mdi-progress-check" color="secondary" text-color="white" />
             </q-item-section>
             <q-item-section>
               <q-item-label style="color:#3C4755">{{$t('orderProgress')}}</q-item-label>
             </q-item-section>
-          </q-item>
+          </q-item> -->
           <q-item to="/history" clickable v-close-popup tabindex="0">
             <q-item-section avatar>
               <q-avatar icon="fa-solid fa-clock-rotate-left" color="secondary" text-color="white" />
@@ -133,11 +133,12 @@
               </q-item-section>
               <!-- btn toggle -->
               <q-item-section>
-                <q-select  v-model="locale" :options="localeOptions" label="Change Language" emit-value map-options style="min-width: 150px;" />
+                <!-- <q-select  v-model="locale" :options="localeOptions" label="Change Language" emit-value map-options style="min-width: 150px;" /> -->
+                <q-option-group dark v-model="locale" :options="localeOptions" color="white" left-label/>
               </q-item-section>
             </q-item>
 
-            <q-separator  v-if='isLogin && isAdmin' />
+            <q-separator  v-if='isLogin && isAdmin' dark/>
 
             <q-item clickable v-ripple v-if='isLogin && isAdmin' to="/admin" >
               <q-item-section avatar>

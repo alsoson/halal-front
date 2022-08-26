@@ -1,12 +1,11 @@
 <template>
   <q-page>
-    <!-- <pre>{{items}}</pre> -->
-  <div class="row text-center">
-        <q-icon name="fa-solid fa-street-view" size="lg" class="q-mx-auto q-my-md"></q-icon>
-      </div>
+    <h5 class="text-center q-mx-auto q-my-md q-mt-lg text-secondary" style="padding:0">
+      <q-icon name="fa-solid fa-street-view" color="secondary"  size="lg" class="q-mx-auto"></q-icon>
+      {{$t('halalAttraction')}}
+    </h5>
+  <!-- <div class="row text-center">
     <div class="q-pa-md flex justify-center">
-<!-- <pre>{{ items }}</pre> -->
-<!-- <pre>{{ arr }}</pre> -->
     <div style="width:90%">
       <q-intersection
         v-for="index in items"
@@ -35,16 +34,62 @@
             <q-item-label>{{ index.phone }}</q-item-label>
           </q-item-section>
 
-          <!-- <q-item-section side>
-            <q-icon name="chat_bubble" color="green" />
-          </q-item-section> -->
         </q-item>
       </q-intersection>
     </div>
   </div>
-  <!-- <q-card v-for="item in items" :key="item.name">
-    {{item.name}}
-  </q-card> -->
+  </div> -->
+  <div class="box halalData" >
+    <q-infinite-scroll @load="onLoad" :offset="250">
+      <div v-for="(index) in items" :key="index.name" class="caption" >
+        <div class="row q-my-md hover" >
+          <div class="col col-1 q-my-auto text-center">
+            <q-avatar icon="fa-solid fa-street-view" size="md" color="primary" text-color="white">
+            </q-avatar>
+          </div>
+          <div class="col col-11">
+            <div class="row">
+              <div class="col col-9 col-sm-6 q-my-auto">
+                <div class="title-wrap">
+                {{index.name}}
+                  <p class="q-ma-none">{{index.address}}</p>
+                </div>
+              </div>
+              <div class="col col-3 col-sm-6">
+                <div class="row">
+                  <div class="col col-12 col-sm-4 q-my-auto">
+                    <div class="word-small q-my-auto" style="text-align:right">
+                    {{index.type}}
+                    </div>
+                  </div>
+                  <div class="col col-12 col-sm-3 q-my-auto">
+                    <div class="word-small q-my-auto">
+                    {{index.district}}
+                    </div>
+                  </div>
+                  <div class="col col-12 col-sm-4 text-right q-my-auto">
+                    <div class="word-small q-my-auto">
+                    {{index.phone}}
+                    </div>
+                  </div>
+                  <div class="col col-0 col-sm-1 text-right q-my-auto">
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <template v-slot:loading>
+        <div class="row justify-center q-my-md">
+          <q-spinner-dots color="primary" size="40px" />
+        </div>
+      </template>
+    </q-infinite-scroll>
+  </div>
+
   </q-page>
 </template>
 <script setup>

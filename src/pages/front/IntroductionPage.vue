@@ -84,10 +84,11 @@
   </div>
   <div class="q-ma-md q-mt-lg">
     <div class="row text-center q-ma-md">
-      <div class="col">
-        <q-avatar color="primary" class="avatar-img text-white">
+      <div class="col text-secondary" style="font-size:30px">
+        <q-avatar color="primary" class="avatar-img text-white" size="sm">
           <q-icon name="fa-solid fa-utensils" size="lg" class="q-mx-auto"></q-icon>
         </q-avatar>
+        {{$t('halalRestaurant')}}
       </div>
     </div>
   </div>
@@ -178,12 +179,13 @@
   </swiper>
 </div>
 
-<div class="q-ma-md q-mt-lg">
+<div class="q-ma-md q-mt-lg q-mt-xl">
     <div class="row text-center q-ma-md">
-      <div class="col">
+      <div class="col text-secondary" style="font-size:30px">
         <q-avatar color="primary" class="avatar-img text-white">
           <q-icon name="fa-solid fa-street-view" size="lg" class="q-mx-auto"></q-icon>
         </q-avatar>
+          {{$t('halalAttraction')}}
       </div>
     </div>
 </div>
@@ -272,12 +274,13 @@
   </swiper>
   </div>
 
-<div class="q-ma-md q-mt-lg">
+<div class="q-ma-md q-mt-lg q-mt-xl">
     <div class="row text-center q-ma-md">
-      <div class="col">
+      <div class="col text-secondary" style="font-size:30px">
         <q-avatar color="primary" class="avatar-img text-white">
           <q-icon name="fa-solid fa-hotel" size="lg" class="q-mx-auto"></q-icon>
         </q-avatar>
+        {{$t('halalAccommodation')}}
       </div>
     </div>
 </div>

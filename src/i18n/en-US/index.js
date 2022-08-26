@@ -15,6 +15,7 @@ export default {
   logOut: 'Log Out',
   image: 'image',
   submit: 'Submit',
+  hot: 'Hot Initerary',
 
   // introduction
   whatIsHalal: 'What is Halal ?',
@@ -76,6 +77,9 @@ export default {
   phone: 'Phone',
   totalPrice: 'Total Price',
   check: 'Checkout',
+
+  // orderPage
+  contactPeople: 'Contact People',
 
   // connectUs
   connectUsTitle: 'Give you the most Joyful Enjoy by Halal',

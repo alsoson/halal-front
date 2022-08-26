@@ -1,5 +1,29 @@
 <template>
   <q-page>
+    <div id="Intinerary">
+    <h5 class="text-center text-secondary q-my-md" style="font-size:35px">
+      <q-icon name="fa-solid fa-book-atlas" size="100px" color="secondary"></q-icon>
+      {{$t('itinerary')}}
+    </h5>
+      <!-- <div class="box" >
+        <div class="row"> <q-icon name="mdi-magnify" size="50px" color="dark"></q-icon> </div>
+        <div class="row"></div>
+      </div> -->
+    </div>
+    <div id="Intinernary-product">
+      <div class="box">
+        <div class="row">
+          <div class="col col-12 col-md-6 col-lg-3 q-pa-sm" v-for='product in products' :key='product._id'>
+          <ProductCard :product='product'></ProductCard>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h5 class="text-center text-secondary" style="font-size:35px">
+  <q-icon name="mdi-fire" size="100px" color="secondary"></q-icon>
+  {{$t('hot')}}
+
+</h5>
     <div id="IntineraryCarosuel" class="flex-center">
       <swiper
         :effect="'coverflow'"
@@ -48,23 +72,6 @@
         </swiper-slide>
       </swiper>
     </div>
-
-    <div id="Intinerary">
-      <div class="box" >
-        <div class="row"> <q-icon name="mdi-magnify" size="50px" color="dark"></q-icon> </div>
-        <div class="row"></div>
-      </div>
-    </div>
-    <div id="Intinernary-product">
-      <div class="box">
-        <div class="row">
-          <div class="col col-12 col-md-6 col-lg-3 q-pa-sm" v-for='product in products' :key='product._id'>
-          <ProductCard :product='product'></ProductCard>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <div id="IntineraryMessage" class="q-py-lg" style="overflow:hidden">
 
       <div class="box">

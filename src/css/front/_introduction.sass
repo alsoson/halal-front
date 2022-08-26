@@ -1,6 +1,6 @@
 #introductionPage
   .splitter
-    height: 400px
+    height: 650px
   .swiper 
     width: 240px
     height: 320px
@@ -22,8 +22,8 @@
     width: 33.333%, impo !important
 
   .avatar-img
-    width:100px
-    height:100px
+    width:70px
+    height:70px
 
   .img-text
     background: $primary
@@ -36,6 +36,11 @@
 
   .sm-none
     display: none
+
+  p
+    font-size:14px
+    line-height: 1.8
+    color: $dark
     
 
 #introductionPageCarousel
@@ -49,12 +54,20 @@
 
   #introductionPage
     .splitter
-      height: 300px
+      height: 500px
 
     .sm-none
       display: block
 
+    p
+      font-size: 16px
+      line-height: 1.8
 
-// @media (min-width: $breakpoint-lg-min)
-//   #introductionPageCarousel
-//     height: 850px
+
+@media (min-width: $breakpoint-lg-min)
+  #introductionPage
+    .splitter
+      height: 400px
+    p
+      font-size: 18px
+      line-height: 1.8

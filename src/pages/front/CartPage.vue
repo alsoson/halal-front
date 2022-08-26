@@ -48,7 +48,7 @@
 <div class="box" style="margin-top:20px">
   <div class="row">
     <div class="col col-12 col-md-2">
-      <q-card class="bg-accent" style="box-shadow:none;border-radius:50px;">
+      <q-card class="bg-accent" style="box-shadow:none;border-radius:16px;">
         <div class="row bg-secondary q-mx-auto rounded" style="width:80%">
         </div>
       <div class="col">
@@ -75,7 +75,7 @@
       <div class="row">
         <div class="col-12 col-md-6 col-lg-4" v-for='(item, idx) in cart' :key='item._id'>
           <!-- {{item}} -->
-          <q-card class="my-card q-pa-sm" :key="item" style="background:transparent;box-shadow:none;border-radius:50px">
+          <q-card class="my-card q-pa-sm" :key="item" style="background:transparent;box-shadow:none;border-radius:16px">
             <q-img :src='item.product.image'>
               <div class="text-h5 absolute-bottom text-right">
                 <div class="flex row justify-between">

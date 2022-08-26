@@ -2,9 +2,13 @@
 <q-page>
   <div class="row text-center">
     <q-btn round icon="fa-solid fa-map-location-dot" color="primary" @click="seamless = true" text-color="white" class="q-my-auto" style="width:50px;height:50px;position:fixed;right:2px;top:62px"/>
-    <q-icon name="fa-solid fa-utensils" color="secondary"  size="lg" class="q-mx-auto q-my-md"></q-icon>
+    <h5 class="text-center q-mx-auto q-my-md q-mt-lg text-secondary" style="padding:0">
+      <q-icon name="fa-solid fa-utensils" color="secondary"  size="lg" class="q-mx-auto"></q-icon>
+      {{$t('halalRestaurant')}}
+    </h5>
+
   </div>
-    <div class="q-pa-md q-gutter-sm">
+    <div class="q-pa-md" style="padding-top:0">
     <q-dialog v-model="seamless" seamless position="right">
       <div flat style="width: 350px;height:700px;background:transparent;border:none;box-shadow:none">
       <q-btn round dense flat icon="close" style="height:30px" v-close-popup></q-btn>
@@ -36,7 +40,7 @@
                     {{index.type}}
                     </div>
                   </div>
-                  <div class="col col-12 col-sm-4 q-my-auto">
+                  <div class="col col-12 col-sm-3 q-my-auto">
                     <div class="word-small q-my-auto">
                     {{index.district}}
                     </div>
@@ -45,6 +49,8 @@
                     <div class="word-small q-my-auto">
                     {{index.phone}}
                     </div>
+                  </div>
+                  <div class="col col-0 col-sm-1 text-right q-my-auto">
                   </div>
                 </div>
               </div>

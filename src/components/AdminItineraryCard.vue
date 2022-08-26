@@ -13,14 +13,14 @@
       <q-card-actions class="flex-center">
         <q-btn flat round color="dark" icon="mdi-heart-circle" text-color="primary" @click="addCollection({ product: product._id, quantity: 1 })"/>
         <q-btn flat round color="dark" icon="mdi-cart-variant" text-color="primary" @click="addCart({ product: product._id, quantity: 1 })"/>
-        <q-btn flat round color="dark" :icon="expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'" @click="expanded = !expanded" />
+        <!-- <q-btn flat round color="dark" :icon="expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'" @click="expanded = !expanded" /> -->
       </q-card-actions>
       <q-slide-transition >
         <div v-show="expanded">
           <q-separator />
-          <q-card-section class="text-subitle2">
+          <!-- <q-card-section class="text-subitle2">
             {{ product.description }}
-          </q-card-section>
+          </q-card-section> -->
         </div>
       </q-slide-transition>
   </q-card>

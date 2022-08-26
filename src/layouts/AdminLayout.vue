@@ -60,7 +60,7 @@
               </q-item-section>
 
               <q-item-section>
-                <q-select  v-model="locale" :options="localeOptions" label="Change Language" emit-value map-options style="min-width: 150px;" />
+                <q-option-group v-model="locale" :options="localeOptions" color="white" left-label/>
               </q-item-section>
             </q-item>
 

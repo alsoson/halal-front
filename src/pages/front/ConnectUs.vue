@@ -23,7 +23,6 @@
               <span style="font-family:Hobo Regular">
                 Hello ! Halal
               </span>
-              {{$t('company')}}
             </h6>
             <!-- 電話信箱 退換 呂素條款 -->
           </div>
@@ -70,8 +69,8 @@
         </template>
       </q-parallax>
     </div>
-
-    <div class="q-pa-md box q-mb-xl" style="">
+  </div>
+    <!-- <div class="q-pa-md box q-mb-xl" style="">
       <q-list class="rounded-borders q-mt-lg">
         <q-expansion-item
           expand-separator
@@ -146,9 +145,14 @@
         </q-expansion-item>
       </q-list>
     </div>
-  </div>
-  <div class="box">
-    <q-btn round color="secondary" @click="commit = true">
+  </div> -->
+  <div class="box q-py-md">
+    <q-btn round color="secondary" v-if="isLogin" @click="commit = true"><q-spinner-comment
+        color="accent"
+        size="1.5em"
+      />
+    </q-btn>
+    <q-btn round color="secondary" v-if="!isLogin" to="/login">
       <q-spinner-comment
         color="accent"
         size="1.5em"
@@ -161,18 +165,21 @@
           <q-form @submit.prevent='submitForm'>
             <div class="row q-pa-md text-center">
               <div class="col-12 col-md-6 q-my-sm q-px-sm">
-                <q-input v-model="form.anonymous" :label="$t('anonymous')" rounded outlined></q-input>
+                <q-input v-model="form.anonymous" :label="$t('anonymous')" rounded outlined
+                :rules='rules.require' lazy-rule>
+                </q-input>
               </div>
               <div class="col-12 col-md-6 q-my-sm q-px-sm">
-                <q-input v-model="form.title" :label="$t('title')" rounded outlined></q-input>
+                <q-input v-model="form.title" :label="$t('title')" rounded outlined :rules='rules.require' lazy-rule></q-input>
               </div>
               <div class="col-12 q-my-sm q-px-sm">
                 <q-input v-model="form.description" :label="$t('content')"
-            type="textarea" rounded outlined></q-input>
+            type="textarea" rounded outlined :rules='rules.require' lazy-rule></q-input>
               </div>
               <div class="col-12 text-center">
-                <q-btn round icon="fa-solid fa-xmark" color="secondary" class="text-center q-mx-sm" v-close-popup></q-btn>
-                <q-btn round icon="fa-solid fa-check" type="sumbit" color="secondary" class="text-center q-mx-sm" :loading='form.submitting' v-close-popup></q-btn>
+
+                <q-btn round icon="fa-solid fa-xmark" color="secondary" class="text-center q-mx-sm" v-close-popup ></q-btn>
+                <q-btn round icon="fa-solid fa-check" type="sumbit" color="secondary" class="text-center q-mx-sm"  :loading='form.submitting' ></q-btn>
               </div>
             </div>
           </q-form>
@@ -180,77 +187,28 @@
       <!-- </q-card> -->
     </q-dialog>
   </div>
-  <!-- <div class="box bg-accent" style="margin-bottom:100px;border-radius:30px">
-    <q-form @submit.prevent='submitForm'>
-      <div class="row q-pa-md ">
-        <div class="col-12 col-md-6 q-my-sm q-px-sm">
-          <q-input v-model="form.anonymous" :label="$t('anonymous')" rounded outlined></q-input>
-        </div>
-        <div class="col-12 col-md-6 q-my-sm q-px-sm">
-          <q-input v-model="form.title" :label="$t('title')" rounded outlined></q-input>
-        </div>
-        <div class="col-12 q-my-sm q-px-sm">
-          <q-input v-model="form.description" :label="$t('content')"
-      type="textarea" rounded outlined></q-input>
-        </div>
-      </div>
-      <q-btn type="sumbit" color="secondary" :label="$t('submit')" class="" :loading='form.submitting'></q-btn>
-    </q-form>
-  </div> -->
+
+  <h5 class="text-center text-secondary">
+    <q-icon size="xl" class="q-mx-md" color="secondary" name="fa-solid fa-person-circle-question"></q-icon>
+    Q A
+  </h5>
 
   <div class="box">
-      <q-table
-      grid
-      :card-container-class="cardContainerClass"
-      :rows="rows"
-      :columns="columns"
-      row-key="name"
-      :filter="filter"
-      hide-header
-      v-model:pagination="pagination"
-      :rows-per-page-options="rowsPerPageOptions"
-    >
-      <template v-slot:top-right>
-        <q-input borderless dense debounce="300" v-model="filter" placeholder="Search">
-          <template v-slot:append>
-            <q-icon name="search" />
-          </template>
-        </q-input>
-      </template>
+    <div class="" v-for="row in rows" :key="row">
+      <q-card class="my-qa q-my-sm" flat bordered>
+        <q-card-section>
+          <div class="text-overline text-secondary" style="font-size:14px" >{{row.title}}</div>
+          <div class="text-h5 q-mt-sm q-mb-xs text-dark" style="font-size:16px" >>{{row.description}}</div>
+          <div class="text-caption text-grey" style="font-size:15px">
+            {{row.reply}}
+          </div>
+        </q-card-section>
 
-      <template v-slot:item="props">
-        <!-- <pre>
-          {{props}}
-        </pre> -->
-        <div class="q-pa-xs col-xs-12 col-sm-6 col-md-4 col-lg-3">
-          <q-card class="qa-card text-dark" :key="props.row" style="background:#fffdf5">
-            <q-card-section class="text-center">
-              <h5 class="q-ma-none text-secondary"><strong>{{ props.row.title }}</strong></h5>
-              <h7 class="text-secondary">{{ props.row.anonymous }}</h7>
-            </q-card-section>
-            <!-- <q-separator /> -->
+      </q-card>
+    </div>
+  </div>
+  <div class="q-pa-md">
 
-            <q-card-section >
-              <span class="text-left q-mx-auto">
-                <q-icon name="fa-solid fa-q" color="secondary"></q-icon>
-              </span>
-              <span class="q-ml-sm">
-                {{ props.row.description }}
-              </span>
-              </q-card-section>
-            <q-separator inset />
-
-            <q-card-section class="text-center">
-              <span class="text-left q-mx-auto">
-                <q-icon name="fa-solid fa-a" color="secondary" ></q-icon>
-              </span>
-              <span class="q-ml-sm">
-                {{ props.row.reply }}
-              </span></q-card-section>
-          </q-card>
-        </div>
-      </template>
-    </q-table>
   </div>
 </q-page>
 </template>
@@ -258,14 +216,24 @@
 import { reactive, ref } from 'vue'
 import { apiAuth } from '../../boot/axios'
 import Swal from 'sweetalert2'
+import { useUserStore } from '../../stores/user'
+import { storeToRefs } from 'pinia'
+const user = useUserStore()
+const { isLogin } = storeToRefs(user)
 
 const rows = reactive([])
-
-// for (i in rows.rowIndex) {
-//   const { i } = ref('one')
+// const expanded = ref(false)
+// const ex = () => {
+//   for (i in rows.rowIndex) {
+//     return expanded[i]
+//   }
 // }
+const rules = reactive({
+  require: [
+    v => !!v || 'Required'
+  ]
+})
 const commit = ref(false)
-const filter = ref('')
 const form = reactive({
   anonymous: '',
   title: '',
@@ -273,19 +241,19 @@ const form = reactive({
   submitting: false
 })
 
-const columns = [
-  {
-    name: 'anonymous',
-    required: true,
-    label: 'Anonymous',
-    align: 'left',
-    // flied: qa => qa.row.anonymous,
-    sortable: true
-  },
-  { name: 'title', align: 'center', label: 'Title', sortable: true, required: true },
-  { name: 'description', label: 'Description', sortable: true },
-  { name: 'reply', label: 'Reply', sortable: true }
-]
+// const columns = [
+//   {
+//     name: 'anonymous',
+//     required: true,
+//     label: 'Anonymous',
+//     align: 'left',
+//     // flied: qa => qa.row.anonymous,
+//     sortable: true
+//   },
+//   { name: 'title', align: 'center', label: 'Title', sortable: true, required: true, flied: qa => qa.rows.title },
+//   { name: 'description', flied: qa => qa.rows.description, label: 'Description', sortable: true },
+//   { name: 'reply', flied: qa => qa.row.reply, label: 'Reply', sortable: true }
+// ]
 
 const submitForm = async () => {
   form.submitting = true
@@ -304,9 +272,9 @@ const submitForm = async () => {
     // form.dialog = false
   } catch (error) {
     Swal.fire({
-      icon: 'error',
-      title: '失敗',
-      text: error.isAxiosError ? error.response.data.message : error.message
+      icon: 'question',
+      title: '等稍等一下再輸入'
+      // text: error.isAxiosError ? error.response.data.message : error.message
     })
   }
   form.submitting = false

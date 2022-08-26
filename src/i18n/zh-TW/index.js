@@ -1,7 +1,7 @@
 export default {
   home: '首頁',
   introduction: '介紹',
-  itinerary: '行程',
+  itinerary: '經典行程',
   connectUs: '聯絡我們',
   adminManagement: '管理',
   orderProgress: '訂單進度',
@@ -13,6 +13,7 @@ export default {
   logOut: '登出',
   image: '圖片',
   submit: '送出',
+  hot: '熱門行程',
 
   // introduction
   whatIsHalal: '認識清真',
@@ -80,6 +81,9 @@ export default {
   phone: '電話',
   totalPrice: '總金額',
   check: '結帳',
+
+  // orderPage
+  contactPeople: '聯絡人',
 
   // connectUs
   connectUsTitle: '給你最忠誠的享受',
