@@ -40,6 +40,8 @@ body
   // justify-content: center
   // align-items: center
 
+.small-none
+  display: none
 .border-radius-50px
   border-radius:50px
 
@@ -47,10 +49,9 @@ body
 //   height: 650px
 //   // height: calc( 100vh - 90px)
 
-// @media (min-width: $breakpoint-sm-min)
-//   #introductionPageCarousel
-//     // height: 750px
-//     height: calc( 100vh - 90px)
+@media (min-width: $breakpoint-sm-min)
+  .small-none
+    display: inline
 
 // // @media (min-width: $breakpoint-lg-min)
 // //   #introductionPageCarousel

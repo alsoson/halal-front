@@ -1,5 +1,5 @@
 <template >
-  <q-page id="" class="q-mt-md" style="height:calc(100% - 60px);min-height:calc(100% - 60px)">
+  <q-page id="cart" class="q-mt-md" style="height:calc(100% - 60px);min-height:calc(100% - 60px)">
 
     <div class="box" style="height:300px" >
         <div class="img1 q-my-auto"></div>
@@ -17,25 +17,29 @@
           <q-card flat >
             <div class="row">
               <div flat class="col" col="10">
-                <q-input rounded flat primary standout v-model="form.firstName" :label="$t('firstName')" class="q-ma-md"></q-input>
+                <q-input rounded flat outlined v-model="form.firstName" :label="$t('firstName')" class="q-ma-md"  lazy-rules
+                  :rules="[ val => val && val.length > 0 || 'Required']"></q-input>
               </div>
               <div class="col" col="10">
-                <q-input rounded flat primary standout v-model="form.lastName" :label="$t('lastName')" class="q-ma-md" style="box-shadow:none"></q-input>
+                <q-input rounded flat outlined v-model="form.lastName" :label="$t('lastName')" class="q-ma-md" style="box-shadow:none"  lazy-rules
+                  :rules="[ val => val && val.length > 0 || 'Required']"></q-input>
               </div>
             </div>
             <div class="row">
               <div class="col" col="6">
-                <q-input rounded flat primary standout v-model="form.phone" :label="$t('phone')" class="q-ma-md" style="box-shadow:none"></q-input>
+                <q-input rounded flat outlined v-model="form.phone" :label="$t('phone')" class="q-ma-md" style="box-shadow:none"  lazy-rules
+                  :rules="rules.phone"></q-input>
               </div>
               <div class="col" col="6">
-                <q-input rounded flat primary standout v-model="form.email" label="Email" class="q-ma-md" style="box-shadow:none"></q-input>
+                <q-input rounded flat outlined v-model="form.email" label="Email" class="q-ma-md" style="box-shadow:none"  lazy-rules
+                  :rules="rules.email"></q-input>
               </div>
             </div>
 
             <q-card-action class="text-center">
               <div class="text-center q-ma-md">
                 <!-- <q-btn :label="$t('1234')" color='primary' :loading='form.submitting' @click='openDialog('')></q-btn> -->
-                <q-btn type="submit" :label="$t('submit')" color='primary' :loading='form.submitting'  v-close-popup></q-btn>
+                <q-btn type="submit" :label="$t('submit')" color='primary' :loading='form.submitting' ></q-btn>
                 <!-- @click='user.checkout' -->
                 <!-- <q-btn @click='user.checkout'></q-btn> -->
               </div>
@@ -46,8 +50,16 @@
     </q-dialog>
 </div>
 <div class="box" style="margin-top:20px">
+  <div class="box">
+      <div class="row text-center">
+      <h5 class="text-center q-mx-auto q-my-md q-mt-lg text-secondary" style="padding:0">
+        <q-icon name="mdi-cart-variant" color="secondary"  size="lg" class="q-mx-auto"></q-icon>
+      {{$t('cart')}}
+      </h5>
+    </div>
+  </div>
   <div class="row">
-    <div class="col col-12 col-md-2">
+    <div class="col col-12 col-md-3">
       <q-card class="bg-accent" style="box-shadow:none;border-radius:16px;">
         <div class="row bg-secondary q-mx-auto rounded" style="width:80%">
         </div>
@@ -65,19 +77,22 @@
             </div>
           </q-card-section>
           <q-card-action>
-            <q-btn class="text-center text-white q-my-auto q-mb-md" color='secondary' @click="openDialog('')" :disabled='!canCheckout'>{{$t('checkout')}}</q-btn>
+            <q-btn class="text-center text-white q-my-auto q-mb-md" color='red' @click="openDialog('')" v-if='canCheckout'>{{$t('checkout')}}</q-btn>
+            <q-btn class="text-center text-white q-my-auto q-mb-md" color='primary' disabled v-else>{{$t('checkout')}}</q-btn>
+            <p class="q-my-md text-red" v-if='!canCheckout && !cart.length '>{{$t('noCart')}}</p>
+            <p class="q-my-md text-red" v-else-if='!canCheckout'>{{$t('checkAgain')}}</p>
           </q-card-action>
         </div>
       </div>
       </q-card>
     </div>
-    <div class="col col-12 col-md-10">
+    <div class="col col-12 col-md-9">
       <div class="row">
         <div class="col-12 col-md-6 col-lg-4" v-for='(item, idx) in cart' :key='item._id'>
           <!-- {{item}} -->
           <q-card class="my-card q-pa-sm" :key="item" style="background:transparent;box-shadow:none;border-radius:16px">
             <q-img :src='item.product.image'>
-              <div class="text-h5 absolute-bottom text-right">
+              <div class="text-h5 absolute-bottom text-right" style="border-radius:16px">
                 <div class="flex row justify-between">
                   <div class="text-h5 text-accent">{{item.product.name}}</div>
                   <div class="text-subtitle1">${{item.product.price}}</div>
@@ -91,7 +106,8 @@
                   <h7>{{ item.quantity }}</h7>
                   <q-btn round flat :key="item._id" class="text-accent" icon="fa-solid fa-circle-plus" @click='updateCart(idx, item.quantity+1)'></q-btn>
                 </div>
-                <q-btn round color='secondary' icon="mdi-delete" @click='updateCart(idx, 0)'></q-btn>
+                <q-btn round color='secondary' icon="mdi-delete" v-if="canCheckout" @click='updateCart(idx, 0)'></q-btn>
+                <q-btn round color='red' icon="mdi-delete" v-else @click='updateCart(idx, 0)'></q-btn>
               </q-card-actions>
               </div>
             </q-img>
@@ -116,6 +132,18 @@ import { useUserStore } from '../../stores/user'
 const user = useUserStore()
 const order = reactive([])
 const cart = reactive([])
+
+const rules = reactive({
+  phone: [
+    v => !!v || 'Required',
+    v => (v.length >= 8 && v.length <= 11) || 'Wrong',
+    v => /^[0-9]+$/.test(v) || 'Wrong'
+  ],
+  email: [
+    v => !!v || 'Required',
+    v => /^\w+((-\w+)|(\.\w+))*@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/.test(v) || 'Wrong'
+  ]
+})
 
 const totalPrice = computed(() => {
   return cart.reduce((a, b) => {
@@ -245,8 +273,9 @@ init()
     top: 0;
     mask: url(https://i.imgur.com/AYJuRke.png);
     mask-size: 3000% 100%;
-    animation: maskMove 3s steps(29) infinite;
+    animation: maskMove 3s steps(29) ;
     animation-delay: revert;
+    animation-fill-mode:forwards;
 }
 
 .img2::before {

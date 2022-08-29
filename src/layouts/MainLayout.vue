@@ -4,7 +4,7 @@
         <q-toolbar class="bg-primary text-white" style="height:60px;">
           <q-btn flat @click="drawer = !drawer" dense >
             <q-img src="../assets/LOGO.png" width="50px"></q-img>
-            <q-toolbar-title style="font-family: 'Hobo Regular', cursive;text-transform:capitalize;">Hello ! Halal</q-toolbar-title>
+            <q-toolbar-title style="font-family: 'Hobo Regular', cursive;text-transform:capitalize;">Hello ! Halal <p style="font-size:14px" class="small-none"> - Intinerary By Halal</p></q-toolbar-title>
             <!-- font-family: 'DynaPuff', cursive; -->
           </q-btn>
           <q-space />

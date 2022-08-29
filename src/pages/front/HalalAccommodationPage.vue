@@ -6,7 +6,6 @@
       <q-icon name="fa-solid fa-hotel" color="secondary"  size="lg" class="q-mx-auto"></q-icon>
       {{$t('halalAccommodation')}}
     </h5>
-
   </div>
     <div class="q-pa-md " style="padding-top:0">
 

@@ -1,7 +1,20 @@
 <template>
 <div class="q-pa-md">
-  <div class="row"></div>
+  <div class="box">
+      <div class="row text-center">
+      <h5 class="text-center q-mx-auto q-my-md q-mt-lg text-secondary" style="padding:0">
+        <q-icon name="mdi-heart-circle" color="secondary"  size="lg" class="q-mx-auto"></q-icon>
+      {{$t('collections')}}
+      </h5>
+    </div>
+  </div>
+  <!-- <div class="row"></div> -->
   <div class="row">
+    <div v-if="!collections.length" class="text-center q-mx-auto">
+      <q-btn  class="text-center q-mx-auto" color="primary" to="/itinerary" style="font-size:25px;border-radius:16px">
+        {{$t('noCollections')}}
+      </q-btn>
+    </div>
     <div class="col col-12 col-sm-6 col-md-4 col-lg-3" v-for="(collection ) in collections" :key="collection._id">
       <q-card class="my-card q-ma-sm" style="">
         <!-- <pre>{{collection}}</pre> -->

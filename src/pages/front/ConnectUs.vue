@@ -198,7 +198,7 @@
       <q-card class="my-qa q-my-sm" flat bordered>
         <q-card-section>
           <div class="text-overline text-secondary" style="font-size:14px" >{{row.title}}</div>
-          <div class="text-h5 q-mt-sm q-mb-xs text-dark" style="font-size:16px" >>{{row.description}}</div>
+          <div class="text-h5 q-mt-sm q-mb-xs text-dark" style="font-size:16px"> {{row.description}}</div>
           <div class="text-caption text-grey" style="font-size:15px">
             {{row.reply}}
           </div>

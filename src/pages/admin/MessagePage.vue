@@ -1,13 +1,13 @@
 <template>
 <q-page id="connectUs">
-  <h2 class=" text-center text-secondary" style="font-family:'ChenYuluoyan-Thin';font-size:10vmin">
-    {{$t('connectUsTitle')}}
-  </h2>
-  <div style="width:100%" class="bg-accent">
-    <h6 class="text-center q-px-lg q-py-lg" style="font-family:'ChenYuluoyan-Thin';font-size:3.5vmin;font-weight:300">
-      {{$t('connectUsP')}}
-    </h6>
-  </div>
+  <div class="box">
+        <div class="row text-center">
+          <h5 class="text-center q-mx-auto q-my-md q-mt-lg text-secondary" style="padding:0">
+            <q-icon name="mdi-forum" size="100px" color="secondary" class="q-mx-auto"></q-icon>
+            {{$t('messageManagement')}}
+          </h5>
+        </div>
+      </div>
 
       <q-table
       grid
@@ -20,13 +20,13 @@
       v-model:pagination="pagination"
       :rows-per-page-options="rowsPerPageOptions"
     >
-      <template v-slot:top-right>
+      <!-- <template v-slot:top-right>
         <q-input borderless dense debounce="300" v-model="filter" placeholder="Search">
           <template v-slot:append>
             <q-icon name="search" />
           </template>
         </q-input>
-      </template>
+      </template> -->
 
       <template v-slot:item="props">
         <!-- <pre>

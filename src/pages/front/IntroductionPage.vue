@@ -64,19 +64,22 @@
             <div class="text-h4 q-mb-md" >{{$t('whatIsHalal')}}</div>
             <p>{{$t('whatIsHalalP')}}</p>
             <p>{{$t('whatIsHalalP2')}}</p>
+            <p>{{$t('whatIsHalalP3')}}</p>
           </q-tab-panel>
 
           <q-tab-panel name="aboutHalal">
             <div class="text-h4 q-mb-md">{{$t('aboutMuslim')}}</div>
             <p>{{$t('aboutMuslimP')}}</p>
             <p>{{$t('aboutMuslimP2')}}</p>
+            <p>{{$t('aboutMuslimP3')}}</p>
           </q-tab-panel>
 
           <q-tab-panel name="aboutHalalTravel" >
             <div class="text-h4 q-mb-md">{{$t('aboutHalalTravel')}}</div>
             <p>{{$t('aboutHalalTravelP')}}</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
+            <p>{{$t('aboutHalalTravelP2')}}</p>
+            <p>{{$t('aboutHalalTravelP3')}}</p>
+
           </q-tab-panel>
         </q-tab-panels>
       </template>

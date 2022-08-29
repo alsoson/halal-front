@@ -1,22 +1,21 @@
 <template>
-<h5 class="text-center">
+<h5 class="text-center text-secondary q-my-md">
   <q-icon name="mdi-account-supervisor-circle" size="100px" color="secondary"></q-icon>
+  {{$t('memberManagement')}}
 </h5>
 <!-- <pre>{{ rows }}</pre> -->
   <div class="q-pa-md">
     <q-table
       :grid="$q.screen.lt.sm"
-      :title="$t('memberManagement')"
       :rows="rows"
       :columns="columns"
       row-key="name"
       title-class="text-h5 title-center"
       v-model:selected="selected"
       :filter="filter"
+      flat
     >
       <template #body-cell-delete="Data" >
-        <!-- <pre>{{ Data.row }}</pre> -->
-        <!-- <pre>{{ Data.row }}</pre> -->
         <q-td style="text-align:right">
           <!-- {{Data.row._id}} -->
           <q-btn rounded style="width:50px;height:50px" class="bg-accent" @click="confirm =true" icon="mdi-delete"></q-btn>

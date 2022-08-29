@@ -1,5 +1,14 @@
 <template>
 <q-page id="memberProfile" class="flex flex-center">
+  <div>
+  <div class="box">
+      <div class="row text-center">
+      <h5 class="text-center q-mx-auto q-my-md q-mt-lg text-secondary" style="padding:0">
+        <q-icon name="mdi-account-box-multiple" color="secondary"  size="lg" class="q-mx-auto"></q-icon>
+      {{$t('memberProfile')}}
+      </h5>
+    </div>
+  </div>
     <div class="row q-mt-none q-mt-lg-xl">
       <q-card flat bordered v-if="openflag" class="q-mx-auto bg-accent" >
         <div class="row memberCard q-pa-lg ">
@@ -42,13 +51,13 @@
                 <q-input label="Email" readonly  v-model="userinfo.email"></q-input>
               </div>
               <div class="col col-12 q-pa-xs">
-                <q-input :label="$t('name')" v-model="editinfo.name"></q-input>
+                <q-input :label="$t('name')" v-model="editinfo.name" lazy-rules :rules='rules.name'></q-input>
               </div>
               <div class="col col-12 col-md-6 q-pa-xs">
-                <q-input :label="$t('smartphone')" v-model="editinfo. smartphone"></q-input>
+                <q-input :label="$t('smartphone')" v-model="editinfo.smartphone" lazy-rules :rules='rules.smartphone'></q-input>
               </div>
               <div class="col col-12 col-md-6 q-pa-xs">
-                <q-input :label="$t('telephone')" v-model="editinfo.telephone"></q-input>
+                <q-input :label="$t('telephone')" v-model="editinfo.telephone" lazy-rules :rules='rules.telephone'></q-input>
               </div>
               <div class="col col-12 q-pa-xs">
                 <q-file type="file" accept='image/*' :hint="$t('imageHint')" :label="$t('imageUpload')" v-model="editinfo.image"></q-file>
@@ -62,6 +71,7 @@
             </div>
             </q-form>
           </q-card>
+      </div>
       </div>
   </q-page>
 </template>
@@ -83,9 +93,23 @@ const changeFlag = () => {
   }
 }
 
+const rules = reactive({
+  name: [
+    v => !!v || 'Required'
+  ],
+  smartphone: [
+    v => !!v || 'Required',
+    v => /^[0-9]+$/.test(v) || 'Wrong'
+  ],
+  telephone: [
+    v => !!v || 'Required',
+    v => /^[0-9]+$/.test(v) || 'Wrong'
+  ]
+})
+
 const userinfo = reactive({
   _id: '',
-  image: null,
+  image: '',
   account: '',
   email: '',
   name: '',
@@ -95,7 +119,7 @@ const userinfo = reactive({
 
 const editinfo = reactive({
   name: '',
-  image: null,
+  image: '',
   smartphone: '',
   telephone: ''
 })
@@ -114,7 +138,7 @@ const goEdit = () => {
 const init = async () => {
   try {
     const { data } = await apiAuth.get('/users')
-    // console.log(data.result)
+    console.log(data.result.image)
     userinfo._id = data.result._id
     userinfo.account = data.result.account
     userinfo.email = data.result.email
@@ -122,13 +146,8 @@ const init = async () => {
     userinfo.image = data.result.image
     userinfo.smartphone = data.result.smartphone
     userinfo.telephone = data.result.telephone
-    // console.log(data.result)
-    // console.log(typeof (data.result))
-    // users.push(data.result)
-    // console.log(users)
-    // return users
   } catch (error) {
-    console.log(error)
+    // console.log(error)
     Swal.fire({
       icon: 'error',
       title: '失敗',
@@ -139,13 +158,11 @@ const init = async () => {
 
 const editForm = async () => {
   try {
-    // console.log(editinfo.image)
-    // console.log(editinfo)
     const fd = new FormData()
 
     for (const key in editinfo) {
       fd.append(key, editinfo[key])
-      console.log(editinfo[key])
+      // console.log(editinfo[key])
     }
     const object = {}
     fd.forEach((value, key) => { object[key] = JSON.stringify(value) })
@@ -165,7 +182,6 @@ const editForm = async () => {
     })
     openflag.value = true
   } catch (error) {
-    // console.log(error)
     Swal.fire({
       icon: 'error',
       title: '失敗',

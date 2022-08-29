@@ -1,17 +1,20 @@
 <template>
   <q-page>
     <div id="Intinerary">
-    <h5 class="text-center text-secondary q-my-md" style="font-size:35px">
-      <q-icon name="fa-solid fa-book-atlas" size="100px" color="secondary"></q-icon>
+    <div class="row text-center">
+      <h5 class="text-center q-mx-auto q-my-md q-mt-lg text-secondary" style="padding:0">
+        <q-icon name="fa-solid fa-book-atlas" color="secondary"  size="lg" class="q-mx-auto"></q-icon>
       {{$t('itinerary')}}
-    </h5>
+      </h5>
+    </div>
+
       <!-- <div class="box" >
         <div class="row"> <q-icon name="mdi-magnify" size="50px" color="dark"></q-icon> </div>
         <div class="row"></div>
       </div> -->
     </div>
     <div id="Intinernary-product">
-      <div class="box">
+      <div class="box ">
         <div class="row">
           <div class="col col-12 col-md-6 col-lg-3 q-pa-sm" v-for='product in products' :key='product._id'>
           <ProductCard :product='product'></ProductCard>
@@ -19,12 +22,18 @@
         </div>
       </div>
     </div>
-    <h5 class="text-center text-secondary" style="font-size:35px">
+    <!-- <h5 class="text-center text-secondary" style="font-size:35px">
   <q-icon name="mdi-fire" size="100px" color="secondary"></q-icon>
   {{$t('hot')}}
 
-</h5>
-    <div id="IntineraryCarosuel" class="flex-center">
+</h5> -->
+    <div id="IntineraryCarosuel" class="flex-center q-mt-lg">
+    <div class="row text-center">
+      <h5 class="text-center q-mx-auto q-my-md q-mt-lg text-secondary" style="padding:0">
+        <q-icon name="mdi-fire" color="secondary"  size="lg" class="q-mx-auto"></q-icon>
+      {{$t('hot')}}
+      </h5>
+    </div>
       <swiper
         :effect="'coverflow'"
         :grabCursor="true"
@@ -72,9 +81,16 @@
         </swiper-slide>
       </swiper>
     </div>
+
     <div id="IntineraryMessage" class="q-py-lg" style="overflow:hidden">
 
       <div class="box">
+        <div class="row text-center">
+      <h5 class="text-center q-mx-auto q-my-md q-mt-lg text-dark" style="padding:0">
+        <q-icon name="mdi-forum" color="dark"  size="lg" class="q-mx-auto"></q-icon>
+      {{$t('message')}}
+      </h5>
+    </div>
         <q-intersection
         transition="flip-right"
         class="example-item"

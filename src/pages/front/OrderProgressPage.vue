@@ -1,5 +1,6 @@
 <template>
 <q-page id="orderPage">
+<!-- NONONONONONONOONONONONONONONONONONONONONONONONONONONONONO -->
   <h5 class="text-center">
   <q-icon name="fa-solid fa-clock-rotate-left" size="md" color="secondary"></q-icon>
   <h5 class="q-my-md text-secondary" >{{$t('orderHistory')}}</h5>
@@ -45,7 +46,10 @@ text-overflow: ellipsis;"><strong>{{ order._id }}</strong></div>
           <div class="text-subtitle1">
             {{$t('contactPeople')}}
           </div>
-          <div class="text-subtitle2">{{ info.lastName }}{{ info.firseName }}</div>
+          <div class="text-center">
+          <div class="text-subtitle2">{{ info.lastName }}{{ info.firstName }}</div>
+          <div class="text-subtitle2">0{{ info.phone }}</div>
+          </div>
         </div>
         </div>
 

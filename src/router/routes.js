@@ -21,7 +21,7 @@ const routes = [
         name: 'introduction',
         component: () => import('src/pages/front/IntroductionPage.vue'),
         meta: {
-          title: 'Hello ! Halal | 介紹',
+          title: 'Hello ! Halal | Introduction',
           login: false,
           admin: false
         }
@@ -61,7 +61,7 @@ const routes = [
         name: 'login',
         component: () => import('src/pages/front/LoginPage.vue'),
         meta: {
-          title: 'Hello ! Halal | 登入',
+          title: 'Hello ! Halal | Login',
           login: false,
           admin: false
         }
@@ -71,7 +71,7 @@ const routes = [
         name: 'connectus',
         component: () => import('src/pages/front/ConnectUs.vue'),
         meta: {
-          title: 'Hello ! Halal | 聯絡我們',
+          title: 'Hello ! Halal | Connect Us',
           login: false,
           admin: false
         }
@@ -153,38 +153,48 @@ const routes = [
     component: () => import('src/layouts/AdminLayout.vue'),
     children: [
       {
+        path: '',
+        name: 'Admin-Home',
+        component: () => import('src/pages/admin/AdminPage.vue'),
+        meta: {
+          title: 'Admin',
+          login: true,
+          admin: true
+        }
+      },
+      {
         path: 'itinerary',
-        name: 'admin-itinerary',
+        name: 'Admin-itinerary',
         component: () => import('src/pages/admin/ItineraryManagementPage.vue'),
         meta: {
-          title: 'Admin | ItineraryManagement',
+          title: 'Admin | Itinerary',
           login: true,
           admin: true
         }
       },
       {
         path: 'order',
-        name: 'admin-order',
+        name: 'Admin-order',
         component: () => import('src/pages/admin/OrderManagementPage.vue'),
         meta: {
-          title: 'Admin | OrderManagement',
+          title: 'Admin | Order',
           login: true,
           admin: true
         }
       },
       {
         path: 'member',
-        name: 'admin-member',
+        name: 'Admin-member',
         component: () => import('src/pages/admin/MemberManagementPage.vue'),
         meta: {
-          title: 'Admin | MemberManagement',
+          title: 'Admin | Member',
           login: true,
           admin: true
         }
       },
       {
         path: 'message',
-        name: 'admin-message',
+        name: 'Admin-message',
         component: () => import('src/pages/admin/MessagePage.vue'),
         meta: {
           title: 'Admin | Message',
