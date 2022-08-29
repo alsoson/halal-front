@@ -39,11 +39,15 @@
               <h7>{{ props.row.anonymous }}</h7>
             </q-card-section>
             <q-separator />
-            <q-card-section class="">{{ props.row.description }}</q-card-section>
+            <q-card-section class="" style="overflow: hidden;
+text-overflow:ellipsis;
+white-space: nowrap">{{ props.row.description }}</q-card-section>
 
             <q-separator inset />
 
-            <q-card-section>
+            <q-card-section style="overflow: hidden;
+text-overflow:ellipsis;
+white-space: nowrap">
             <div class="text-subtitle2">Answer</div>
               {{ props.row.reply }}
               </q-card-section>
@@ -51,6 +55,7 @@
             <q-card-action>
               <!-- <q-btn rounded style="width:50px;height:50px"  class="bg-red" icon="mdi-delete"></q-btn> -->
               <q-btn rounded @click="openDialog(props.row._id)" :key="props.row._id" style="width:50px;height:50px" class="bg-accent" icon="mdi-circle-edit-outline"></q-btn>
+              <!-- 彈跳視窗 -->
                 <q-dialog :key="props.row._id" v-model="form.dialog" persistent style="width:100%">
                   <q-card flat bordered  style="width:100%" class="my-card bg-secondary text-white">
                     <q-form v-model="form" @submit.prevent='submitForm'>
@@ -67,15 +72,17 @@
 
                         <q-card-section>
                           <div class="text-subtitle2">Answer</div>
-                          <q-input v-model="form.reply" type="textarea" color="white"></q-input>
+                          <q-input v-model="form.reply"
+                          :rules="[val => !!val || 'Required']" type="textarea" color="white"></q-input>
                         </q-card-section>
 
                         <q-separator dark />
 
                         <q-card-actions>
                           <q-btn v-close-popup round flat icon="fa-solid fa-xmark"></q-btn>
-                          <q-btn flat v-close-popup  round type="submit" icon="fa-solid fa-check" @click="submitForm()"></q-btn>
+                          <q-btn flat  round type="submit" icon="fa-solid fa-check"></q-btn>
                           <q-toggle
+                            v-if="form.reply"
                             :false-value="false"
                             :label="`On the Shelf - ${form.sell}`"
                             :true-value="true"
@@ -98,7 +105,7 @@ import { apiAuth } from '../../boot/axios'
 import Swal from 'sweetalert2'
 
 const rows = reactive([])
-
+// const filter = ref('')
 // for (i in rows.rowIndex) {
 //   const { i } = ref('one')
 // }
@@ -127,7 +134,7 @@ const columns = [
     required: true,
     label: 'Anonymous',
     align: 'left',
-    // flied: qa => qa.row.anonymous,
+    flied: qa => qa.row.anonymous,
     sortable: true
   },
   { name: 'title', align: 'center', label: 'Title', sortable: true, required: true },
