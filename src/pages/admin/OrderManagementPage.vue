@@ -181,9 +181,9 @@ const init = async () => {
   } catch (error) {
     console.log(error)
     Swal.fire({
-      icon: 'error',
-      title: '失敗',
-      text: '無法取得訂單'
+      icon: 'question',
+      title: 'Please try it again'
+      // text: '無法取得訂單'
     })
   }
 }

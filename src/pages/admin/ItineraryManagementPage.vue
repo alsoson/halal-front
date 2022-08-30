@@ -380,8 +380,8 @@ const submitForm = async () => {
       products.push(data.result)
       Swal.fire({
         icon: 'success',
-        title: '成功',
-        text: '新增成功'
+        title: 'Add Itinernary Success'
+        // text: '新增成功'
       })
     } else {
       const { data } = await apiAuth.patch('/products/' + form._id, fd)
@@ -389,16 +389,16 @@ const submitForm = async () => {
       products[form.idx] = data.result
       Swal.fire({
         icon: 'success',
-        title: '成功',
-        text: '編輯成功'
+        title: 'Edit Itinerary Success'
+        // text: '編輯成功'
       })
       init()
     }
     form.dialog = false
   } catch (error) {
     Swal.fire({
-      icon: 'success',
-      title: '失敗',
+      icon: 'question',
+      title: 'Please try it again',
       text: error.isAxiosError ? error.response.data.message : error.message
     })
   }
@@ -410,15 +410,15 @@ const deleteProduct = async(productId) => {
     await apiAuth.delete('/products/' + productId)
     await Swal.fire({
       icon: 'success',
-      title: '成功',
-      text: '行程刪除成功'
+      title: 'Delete Itinerary Success'
+      // text: '行程刪除成功'
     })
     init()
   } catch (error) {
     Swal.fire({
-      icon: 'error',
-      title: '行程刪除失敗',
-      text: '行程刪除失敗'
+      icon: 'question',
+      title: 'Please Delete Itinerary Again'
+      // text: '行程刪除失敗'
     })
   }
 }
@@ -433,11 +433,11 @@ const init = async () => {
     console.log(error)
     Swal.fire({
       icon: 'error',
-      title: '失敗',
-      text: error.isAxiosError ? error.response.data.message : error.message
+      title: 'Please try it again'
+      // text: error.isAxiosError ? error.response.data.message : error.message
     })
   }
 }
-console.log(products)
+// console.log(products)
 init()
 </script>

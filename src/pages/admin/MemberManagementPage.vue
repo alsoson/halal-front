@@ -115,15 +115,15 @@ const deleteUser = async(userId) => {
     await apiAuth.delete('/users/' + userId)
     await Swal.fire({
       icon: 'success',
-      title: '成功',
-      text: '刪除成功'
+      title: 'Delete Member Success'
+      // text: '刪除成功'
     })
     init()
   } catch (error) {
     Swal.fire({
-      icon: 'error',
-      title: '刪除失敗',
-      text: error.isAxiosError ? error.response.data.message : error.message
+      icon: 'question',
+      title: 'Please delete member again'
+      // text: error.isAxiosError ? error.response.data.message : error.message
     })
   }
 }
@@ -137,9 +137,9 @@ const init = async () => {
   } catch (error) {
     console.log(error)
     Swal.fire({
-      icon: 'error',
-      title: '失敗',
-      text: error.isAxiosError ? error.response.data.message : error.message
+      icon: 'question',
+      title: 'Please try it aagain'
+      // text: error.isAxiosError ? error.response.data.message : error.message
     })
   }
 }
