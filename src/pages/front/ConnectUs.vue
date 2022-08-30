@@ -266,14 +266,14 @@ const submitForm = async () => {
     })
     Swal.fire({
       icon: 'success',
-      title: '成功',
-      text: '需等待幾日回覆喔'
+      title: 'Please wait few days for reply'
+      // text: '需等待幾日回覆喔'
     })
     // form.dialog = false
   } catch (error) {
     Swal.fire({
       icon: 'question',
-      title: '等稍等一下再輸入'
+      title: 'Please try it again'
       // text: error.isAxiosError ? error.response.data.message : error.message
     })
   }
@@ -287,9 +287,9 @@ const init = async () => {
   } catch (error) {
     console.log(error)
     Swal.fire({
-      icon: 'error',
-      title: '失敗',
-      text: error.isAxiosError ? error.response.data.message : error.message
+      icon: 'question',
+      title: 'Please try it again'
+      // text: error.isAxiosError ? error.response.data.message : error.message
     })
   }
 }

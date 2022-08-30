@@ -221,15 +221,15 @@ const register = async () => {
     await api.post('/users', formRegister)
     await Swal.fire({
       icon: 'success',
-      title: '成功',
-      text: '註冊成功'
+      title: 'Register success'
+      // text: '註冊成功'
     })
     router.push('/')
   } catch (error) {
     Swal.fire({
-      icon: 'error',
-      title: '失敗',
-      text: (error.isAxiosError && error.response.data) ? error.response.data.message : '發生錯誤'
+      icon: 'question',
+      title: 'Please try it again'
+      // text: (error.isAxiosError && error.response.data) ? error.response.data.message : '發生錯誤'
     })
     console.log(error)
   }

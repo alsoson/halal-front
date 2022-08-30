@@ -205,16 +205,16 @@ const submitForm = async () => {
       // this.order
       Swal.fire({
         icon: 'success',
-        title: '成功',
-        text: '新增訂單成功'
+        title: 'Add Order Success'
+        // text: '新增訂單成功'
       })
     }
     form.dialog = false
   } catch (error) {
     Swal.fire({
-      icon: 'error',
-      title: '失敗',
-      text: error.isAxiosError ? error.response.data.message : error.message
+      icon: 'question',
+      title: 'Please add order again'
+      // text: error.isAxiosError ? error.response.data.message : error.message
     })
   }
   form.submitting = false
@@ -243,9 +243,9 @@ const init = async () => {
     // products.push(...data.result)
   } catch (error) {
     Swal.fire({
-      icon: 'error',
-      title: '失敗',
-      text: '伺服器錯誤'
+      icon: 'question',
+      title: 'Please try it again'
+      // text: '伺服器錯誤'
     })
   }
 }

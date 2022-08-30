@@ -75,15 +75,15 @@ const deleteCollection = async(productId) => {
     await apiAuth.delete('/users/collections/' + productId)
     await Swal.fire({
       icon: 'success',
-      title: '成功',
-      text: '刪除成功'
+      title: 'Delete Success'
+      // text: '刪除成功'
     })
     init()
   } catch (error) {
     Swal.fire({
-      icon: 'error',
-      title: '刪除失敗',
-      text: error
+      icon: 'question',
+      title: 'Please delete again'
+      // text: error
     })
   }
 }
@@ -114,9 +114,9 @@ const init = async () => {
     // console.log(collections[0].product)
   } catch (error) {
     Swal.fire({
-      icon: 'error',
-      title: '失敗',
-      text: error
+      icon: 'question',
+      title: 'Please try it again'
+      // text: error
     })
   }
 }

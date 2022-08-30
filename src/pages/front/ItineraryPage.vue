@@ -218,9 +218,9 @@ const init = async () => {
     products.push(...data.result)
   } catch (error) {
     Swal.fire({
-      icon: 'error',
-      title: '失敗',
-      text: '伺服器錯誤'
+      icon: 'warning',
+      title: 'Please try it again',
+      text: 'Please wait a minute and refresh'
     })
   }
 }

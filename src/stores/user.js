@@ -38,15 +38,15 @@ export const useUserStore = defineStore({
         // this.cart = data.result.cart
         Swal.fire({
           icon: 'success',
-          title: '成功',
-          text: '登入成功'
+          title: 'Login Success'
+          // text: '登入成功'
         })
         this.router.push('/')
       } catch (error) {
         Swal.fire({
-          icon: 'error',
-          title: '失敗',
-          text: (error.isAxiosError && error.response.data) ? error.response.data.message : '發生錯誤'
+          icon: 'question',
+          title: 'Please Login again'
+          // text: (error.isAxiosError && error.response.data) ? error.response.data.message : '發生錯誤'
         })
       }
     },
@@ -61,8 +61,8 @@ export const useUserStore = defineStore({
         this.router.push('/')
         Swal.fire({
           icon: 'success',
-          title: '成功',
-          text: '登出成功'
+          title: 'Logout Success'
+          // text: '登出成功'
         })
       } catch (_) {
       }
@@ -75,18 +75,18 @@ export const useUserStore = defineStore({
       console.log(data)
       if (this.token.length === 0) {
         Swal.fire({
-          icon: 'error',
-          title: '失敗',
-          text: '請先登入'
+          icon: 'question',
+          title: 'Please Login'
+          // text: '請先登入'
         })
         this.router.push('/login')
         return
       }
       if (data.quantity <= 0) {
         Swal.fire({
-          icon: 'error',
-          title: '失敗',
-          text: '數量必須大於 0'
+          icon: 'question',
+          title: 'please change quantity',
+          text: 'Quantity must be more than 0'
         })
         return
       }
@@ -97,23 +97,23 @@ export const useUserStore = defineStore({
         this.cart = resData.result
         Swal.fire({
           icon: 'success',
-          title: '成功',
-          text: '加入購物車成功'
+          title: 'Add Cart success'
+          // text: '加入購物車成功'
         })
       } catch (error) {
         Swal.fire({
-          icon: 'error',
-          title: '失敗',
-          text: error
+          icon: 'question',
+          title: 'Please Login'
+          // text: error
         })
       }
     },
     async addCollection (data) {
       if (this.token.length === 0) {
         Swal.fire({
-          icon: 'error',
-          title: '失敗',
-          text: '請先登入'
+          icon: 'question',
+          title: 'Please Login'
+          // text: 'Please Login'
         })
         this.router.push('/login')
         return
@@ -132,14 +132,14 @@ export const useUserStore = defineStore({
         // this.collection = resData.result
         Swal.fire({
           icon: 'success',
-          title: '成功',
-          text: '加入最愛成功'
+          title: 'Add Collection success'
+          // text: '加入最愛成功'
         })
       } catch (error) {
         Swal.fire({
-          icon: 'error',
-          title: '失敗',
-          text: error
+          icon: 'question',
+          title: 'Please try it again'
+          // text: error
         })
       }
     },
@@ -149,9 +149,9 @@ export const useUserStore = defineStore({
         return true
       } catch (error) {
         Swal.fire({
-          icon: 'error',
-          title: '失敗',
-          text: '更新購物車失敗'
+          icon: 'question',
+          title: 'Please try it again'
+          // text: '更新購物車失敗'
         })
         return false
       }
@@ -172,9 +172,8 @@ export const useUserStore = defineStore({
         this.router.push('/progress')
       } catch (error) {
         Swal.fire({
-          icon: 'error',
-          title: '失敗',
-          text: '結帳失敗'
+          icon: 'warning',
+          title: 'Please try it again'
         })
       }
     },

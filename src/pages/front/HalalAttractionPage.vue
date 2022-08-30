@@ -104,9 +104,9 @@ const init = async () => {
     items.push(...data.result)
   } catch (error) {
     Swal.fire({
-      icon: 'error',
-      title: '失敗',
-      text: error
+      icon: 'warning',
+      title: 'Please try it again',
+      text: 'Please wait a minute and refresh'
     })
   }
 }
