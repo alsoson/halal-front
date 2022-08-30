@@ -135,17 +135,17 @@ const routes = [
           login: true,
           admin: false
         }
-      },
-      {
-        path: 'progress',
-        name: 'progress',
-        component: () => import('src/pages/front/OrderProgressPage.vue'),
-        meta: {
-          title: 'Hello ! Halal | Progress',
-          login: true,
-          admin: false
-        }
       }
+      // {
+      //   path: 'progress',
+      //   name: 'progress',
+      //   component: () => import('src/pages/front/OrderProgressPage.vue'),
+      //   meta: {
+      //     title: 'Hello ! Halal | Progress',
+      //     login: true,
+      //     admin: false
+      //   }
+      // }
     ]
   },
   {
