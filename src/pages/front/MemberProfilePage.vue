@@ -177,15 +177,15 @@ const editForm = async () => {
     init()
     Swal.fire({
       icon: 'success',
-      title: '成功',
-      text: '編輯成功'
+      title: 'Edit Success'
+      // text: '編輯成功'
     })
     openflag.value = true
   } catch (error) {
     Swal.fire({
-      icon: 'error',
-      title: '失敗',
-      text: error.isAxiosError ? error.response.data.message : error.message
+      icon: 'question',
+      title: 'Please try it again'
+      // text: error.isAxiosError ? error.response.data.message : error.message
     })
   }
 }
