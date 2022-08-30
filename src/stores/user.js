@@ -169,7 +169,7 @@ export const useUserStore = defineStore({
         //   title: '成功',
         //   text: '結帳成功'
         // })
-        this.router.push('/progress')
+        this.router.push('/history')
       } catch (error) {
         Swal.fire({
           icon: 'warning',
